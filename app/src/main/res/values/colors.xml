@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2A2A2A</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#FFCE34</color>
+
+    <color name="bgDrawer">#701F7F</color>
+    <color name="bgNav">#70AF9F</color>
+    <color name="indicator_on">#666</color>
+    <color name="indicator_off">#CDCDCD</color>
+
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+
+    <color name="yellow">#ffce34</color>
+    <color name="red">#ff3434</color>
+    <color name="orange">#ff8a34</color>
+
+    <color name="title_bg">#2a2a2a</color>
+    <color name="txt_main">#333</color>
+    <color name="txt_auxiliary">#979797</color>
+    <color name="auxiliary_on">#666</color>
+    <color name="auxiliary_off">#cdcdcd</color>
+    <color name="divider">#ededed</color>
+    <color name="bg">#f6f6f6</color>
+
+    <color name="transparent">#0000</color>
+    <color name="translucentAccent">#88ffce34</color>
+
+    <!-- Specified -->
+    <color name="txt_discount">#a57f06</color>
+</resources>

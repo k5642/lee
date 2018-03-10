@@ -1,0 +1,39 @@
+<resources>
+    <!--general-->
+    <dimen name="card_view_elevation">4dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="bar_height">40dp</dimen>
+    <dimen name="beyond_bar">48dp</dimen>
+    <dimen name="beyond_bar_x2">104dp</dimen>
+    <dimen name="base_button_height">48dp</dimen>
+    <dimen name="bottom_nav_height">60dp</dimen>
+
+    <!--huge views-->
+    <dimen name="drawer_layout_width">240dp</dimen>
+    <dimen name="bg_layout_height">280dp</dimen>
+    <dimen name="brand_layout_height">340dp</dimen>
+
+    <!--homepage-->
+    <dimen name="homepage_logo_width">300dp</dimen>
+    <dimen name="homepage_logo_height">60dp</dimen>
+    <dimen name="homepage_banner_height">160dp</dimen>
+    <dimen name="homepage_menu_item_size">24dp</dimen>
+    <dimen name="homepage_brand_length">90dp</dimen>
+    <dimen name="homepage_brand_label_height">120dp</dimen>
+    <dimen name="homepage_recommend_height">240dp</dimen>
+    <dimen name="homepage_recommend_img_height">160dp</dimen>
+
+    <!-- category -->
+    <dimen name="category_item_height">90dp</dimen>
+
+    <!--text size-->
+    <dimen name="txt_drawer">16sp</dimen>
+    <dimen name="txt_main">14sp</dimen>
+    <dimen name="txt_description">12sp</dimen>
+
+
+</resources>

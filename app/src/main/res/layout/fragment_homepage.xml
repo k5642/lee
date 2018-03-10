@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homepage_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.beuno.beuno.page.homepage.HomepageFragment"
+    tools:showIn="@layout/activity_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg">
+
+            <RelativeLayout
+                android:id="@+id/banner_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bg_layout_height"
+                android:background="@mipmap/home_banner_bg"
+                android:paddingTop="@dimen/margin_24"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/btn_search"
+                    android:layout_width="@dimen/homepage_menu_item_size"
+                    android:layout_height="@dimen/homepage_menu_item_size"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="@dimen/margin_16"
+                    android:background="@color/transparent"
+                    android:contentDescription="@string/homepage_search"
+                    android:src="@mipmap/home_icon_search" />
+
+                <ImageButton
+                    android:id="@+id/btn_notice"
+                    android:layout_width="@dimen/homepage_menu_item_size"
+                    android:layout_height="@dimen/homepage_menu_item_size"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="@dimen/margin_16"
+                    android:background="@color/transparent"
+                    android:contentDescription="@string/homepage_notice"
+                    android:src="@mipmap/home_icon_msg" />
+
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/homepage_logo_height"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/homepage_logo"
+                    android:src="@mipmap/home_logo" />
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/homepage_banner_height"
+                    android:layout_below="@id/img_logo"
+                    android:layout_marginEnd="@dimen/margin_16"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:elevation="@dimen/card_view_elevation">
+
+                    <ImageView
+                        android:id="@+id/banner_img"
+                        android:layout_width="match_parent"
+                        android:background="@color/txt_main"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/home_banner"
+                        android:contentDescription="@string/default_img_description" />
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                    android:id="@+id/banner_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_8"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@id/banner"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:text="@string/banner_indicator" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/margin_16"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner_container" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_brand"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/brand_layout_height"
+                android:layout_marginTop="@dimen/margin_8"
+                android:background="@mipmap/home_brand_bg"
+                android:paddingBottom="@dimen/margin_24"
+                android:paddingLeft="@dimen/margin_24"
+                android:paddingRight="@dimen/margin_24"
+                android:paddingTop="@dimen/homepage_brand_label_height"
+                app:layout_constraintTop_toBottomOf="@id/list_category" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_recommend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:background="@mipmap/home_brand_bg"
+                android:paddingBottom="@dimen/margin_8"
+                android:paddingLeft="@dimen/margin_8"
+                android:paddingRight="@dimen/margin_8"
+                android:paddingTop="@dimen/homepage_brand_label_height"
+                app:layout_constraintTop_toBottomOf="@id/list_brand" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/bottom_holder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_nav_height"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/list_recommend" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

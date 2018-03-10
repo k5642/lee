@@ -1,0 +1,6 @@
+/*
+    ModelProvider
+        of()
+        get()
+        init()
+ */
