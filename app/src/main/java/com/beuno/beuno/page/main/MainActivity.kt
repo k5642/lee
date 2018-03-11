@@ -6,14 +6,13 @@ import android.support.annotation.IdRes
 import android.view.Menu
 import android.view.MenuItem
 import com.beuno.beuno.R
-import com.beuno.beuno.alpha.UnoConfig
 import com.beuno.beuno.page.base.UnoBaseActivity
 import com.beuno.beuno.page.entry.TestActivity
 import com.beuno.beuno.page.homepage.CartFragment
 import com.beuno.beuno.page.homepage.CategoryFragment
 import com.beuno.beuno.page.homepage.HomepageFragment
 import com.beuno.beuno.page.settings.SettingsActivity
-import com.beuno.beuno.shortcut.getSize
+import com.beuno.beuno.plugin.PluginActivity
 import com.beuno.beuno.shortcut.logger
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -70,9 +69,6 @@ class MainActivity : UnoBaseActivity() {
             true
         }
 
-        logger("get toolbar size = ${mToolbar!!.getSize()}")
-        UnoConfig.TOOLBAR_HEIGHT = mToolbar!!.getSize().second
-
         logger("init with homepage fragment")
         switchFragment(HomepageFragment())
 
@@ -95,26 +91,6 @@ class MainActivity : UnoBaseActivity() {
             }
         }
         mContent = to
-    }
-
-
-    // ------------------------------------------------------------------------------
-    //                                   Override
-    // ------------------------------------------------------------------------------
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_test -> startActivity(TestActivity::class.java)
-            R.id.action_settings -> startActivity(SettingsActivity::class.java)
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     // ------------------------------------------------------------------------------

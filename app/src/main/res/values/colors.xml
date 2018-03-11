@@ -25,6 +25,7 @@
     <color name="bg">#f6f6f6</color>
 
     <color name="transparent">#0000</color>
+    <color name="translucent">#8000</color>
     <color name="translucentAccent">#88ffce34</color>
 
     <!-- Specified -->

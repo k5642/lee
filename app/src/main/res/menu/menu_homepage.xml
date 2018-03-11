@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.beuno.beuno.page.main.MainActivity">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@mipmap/home_icon_search"
+        android:orderInCategory="100"
+        android:title="@string/title_search"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_notice"
+        android:icon="@mipmap/home_icon_msg"
+        android:orderInCategory="100"
+        android:title="@string/title_notice"
+        app:showAsAction="ifRoom" />
+</menu>

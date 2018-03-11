@@ -11,6 +11,7 @@
     <dimen name="beyond_bar_x2">104dp</dimen>
     <dimen name="base_button_height">48dp</dimen>
     <dimen name="bottom_nav_height">60dp</dimen>
+    <dimen name="toolbar_min_height">100dp</dimen>
 
     <!--huge views-->
     <dimen name="drawer_layout_width">240dp</dimen>
@@ -20,7 +21,8 @@
     <!--homepage-->
     <dimen name="homepage_logo_width">300dp</dimen>
     <dimen name="homepage_logo_height">60dp</dimen>
-    <dimen name="homepage_banner_height">160dp</dimen>
+    <dimen name="homepage_banner_height">200dp</dimen>
+    <dimen name="homepage_banner_bg_height">260dp</dimen>
     <dimen name="homepage_menu_item_size">24dp</dimen>
     <dimen name="homepage_brand_length">90dp</dimen>
     <dimen name="homepage_brand_label_height">120dp</dimen>

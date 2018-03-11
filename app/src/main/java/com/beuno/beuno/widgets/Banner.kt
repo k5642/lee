@@ -10,7 +10,7 @@ import com.beuno.beuno.R
 /**
  * TODO: document your custom view class.
  */
-class BannerIndiator(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : View(context, attrs, defStyleAttr) {
+class Banner(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : View(context, attrs, defStyleAttr) {
     /**页数  */
     private var count: Int = 0
     /** 当前显示的是第几页  */
