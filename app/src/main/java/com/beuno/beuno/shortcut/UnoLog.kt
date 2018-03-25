@@ -10,22 +10,24 @@ fun initLogTag(tag: String) {
     UnoConfig.LOG_TAG = tag
 }
 
-/** Log */
+/** Log, 当前日志项, warn级别 */
 fun <T : Any> T.logger(): T {
-    logger("$this")
+    logger("$this", true)
     return this
 }
 
-/** Log */
-fun logger(msg: Any, tag: String = UnoConfig.LOG_TAG) {
-    if (UnoConfig.IS_MODE_TEST)
-        Log.w(tag, msg.toString())
-//        try { Log.w(tag, msg.toString()) }
-//        catch (e: RuntimeException) { println(msg) }
+/** Log, 常规日志项, info级别 */
+fun logger(msg: Any, highlight: Boolean = false, tag: String = UnoConfig.LOG_TAG) {
+    if (UnoConfig.IS_MODE_TEST) {
+        if (highlight)
+            Log.w(tag, msg.toString())
+        else
+            Log.i(tag, msg.toString())
+    }
 }
 
 /** 相当于老版本的Toast */
-fun snack(view: View, text: CharSequence, action: SnackAction?, duration: Int = Snackbar.LENGTH_LONG) {
+fun snack(view: View, text: CharSequence, action: SnackAction? = null, duration: Int = Snackbar.LENGTH_LONG) {
     Snackbar.make(view, text, duration)
             .apply {
                 if (action != null) setAction(action.text, action.listener)

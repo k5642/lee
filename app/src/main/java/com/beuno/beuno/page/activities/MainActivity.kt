@@ -1,21 +1,23 @@
-package com.beuno.beuno.page.main
+package com.beuno.beuno.page.activities
 
 import android.app.Fragment
 import android.os.Bundle
 import android.support.annotation.IdRes
-import android.view.Menu
 import android.view.MenuItem
 import com.beuno.beuno.R
 import com.beuno.beuno.page.base.UnoBaseActivity
-import com.beuno.beuno.page.entry.TestActivity
 import com.beuno.beuno.page.homepage.CartFragment
 import com.beuno.beuno.page.homepage.CategoryFragment
 import com.beuno.beuno.page.homepage.HomepageFragment
-import com.beuno.beuno.page.settings.SettingsActivity
-import com.beuno.beuno.plugin.PluginActivity
+import com.beuno.beuno.page.homepage.SelfFragment
 import com.beuno.beuno.shortcut.logger
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * 主页的Activity容器
+ *
+ * todo 跳转逻辑太不优雅
+ */
 class MainActivity : UnoBaseActivity() {
 
     private val mFragmentMap = mutableMapOf<Int, Fragment>()
@@ -40,6 +42,7 @@ class MainActivity : UnoBaseActivity() {
             is HomepageFragment -> R.id.homepage
             is CategoryFragment -> R.id.category
             is CartFragment -> R.id.cart
+            is SelfFragment -> R.id.self
             else -> -1
         }
     }
@@ -49,6 +52,7 @@ class MainActivity : UnoBaseActivity() {
             R.id.homepage -> HomepageFragment()
             R.id.category -> CategoryFragment()
             R.id.cart -> CartFragment()
+            R.id.self -> SelfFragment()
             else -> HomepageFragment()
         }
     }

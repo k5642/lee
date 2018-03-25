@@ -3,13 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.beuno.beuno.page.activities.MainActivity">
     <item
-        android:id="@+id/action_test"
+        android:id="@+id/action_edit"
         android:orderInCategory="100"
-        android:title="@string/action_test"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/action_edit"
         app:showAsAction="ifRoom" />
 </menu>

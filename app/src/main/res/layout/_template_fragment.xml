@@ -8,6 +8,7 @@
         Toolbar, id-toolbar不要改, 代码里写死了
 
     NestedScrollView: 常规布局代码写到这里面, 因为这货只能有一个子布局, 所以里面需要加一层ConstraintLayout
+        bottom_holder, 为了保证底部高于Activity中的底部导航栏.
 -->
 
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -33,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/default_img_description"
-                android:minHeight="100dp"
+                android:minHeight="@dimen/toolbar_min_height"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/home_banner_bg"
                 android:background="@color/colorAccent"
@@ -64,6 +65,18 @@
             android:layout_height="wrap_content">
 
             <!--general layout here-->
+
+            <View
+                android:id="@+id/sample_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/bottom_holder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/long_rect_height"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sample_view" />
 
         </android.support.constraint.ConstraintLayout>
 

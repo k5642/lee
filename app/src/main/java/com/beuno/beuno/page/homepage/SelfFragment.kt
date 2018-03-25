@@ -1,4 +1,4 @@
-package com.beuno.beuno.page.level_2_fragment
+package com.beuno.beuno.page.homepage
 
 import android.view.View
 import com.beuno.beuno.R
@@ -6,8 +6,8 @@ import com.beuno.beuno.page.base.UnoBaseFragment
 import com.beuno.beuno.page.entry.TestActivity
 import com.beuno.beuno.page.settings.SettingsActivity
 
-class NoticeFragment : UnoBaseFragment() {
-    override fun layoutRes(): Int = R.layout.fragment_notice
+class SelfFragment : UnoBaseFragment() {
+    override fun layoutRes(): Int = R.layout.fragment_self
     override fun menuRes() = R.menu.menu_main
 
     override fun onMenuItemSelected(itemId: Int): Boolean {

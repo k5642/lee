@@ -1,7 +1,9 @@
 <resources>
     <!--general-->
-    <dimen name="card_view_elevation">4dp</dimen>
+    <dimen name="elevation_light">4dp</dimen>
+    <dimen name="elevation_deep">8dp</dimen>
     <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_6">6dp</dimen>
     <dimen name="margin_8">8dp</dimen>
     <dimen name="margin_12">12dp</dimen>
     <dimen name="margin_16">16dp</dimen>
@@ -10,8 +12,9 @@
     <dimen name="beyond_bar">48dp</dimen>
     <dimen name="beyond_bar_x2">104dp</dimen>
     <dimen name="base_button_height">48dp</dimen>
-    <dimen name="bottom_nav_height">60dp</dimen>
     <dimen name="toolbar_min_height">100dp</dimen>
+    <dimen name="long_rect_height">60dp</dimen>
+    <dimen name="long_rect_width">120dp</dimen>
 
     <!--huge views-->
     <dimen name="drawer_layout_width">240dp</dimen>
@@ -31,9 +34,12 @@
 
     <!-- category -->
     <dimen name="category_item_height">90dp</dimen>
+    <dimen name="category_sub_item_width">90dp</dimen>
+    <dimen name="category_sub_item_height">60dp</dimen>
 
     <!--text size-->
-    <dimen name="txt_drawer">16sp</dimen>
+    <dimen name="txt_huge">18sp</dimen>
+    <dimen name="txt_large">16sp</dimen>
     <dimen name="txt_main">14sp</dimen>
     <dimen name="txt_description">12sp</dimen>
 

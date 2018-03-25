@@ -6,12 +6,10 @@ import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.beuno.beuno.R
 import com.beuno.beuno.alpha.UnoConfig
-import com.beuno.beuno.page.main.SubLevelActivity
+import com.beuno.beuno.page.activities.SubLevelActivity
 import com.beuno.beuno.shortcut.initLogTag
 import com.beuno.beuno.shortcut.logger
 
@@ -27,9 +25,10 @@ import com.beuno.beuno.shortcut.logger
  */
 //abstract class UnoBaseFragment : android.support.v4.app.Fragment() {
 abstract class UnoBaseFragment : Fragment() {
-    private lateinit var mRoot: View
+    protected lateinit var mRoot: View
     protected var mSupportActionBar: ActionBar? = null
     protected var mToolbar: Toolbar? = null
+    protected lateinit var mActivity: UnoBaseActivity
 
     // 创建时调用子类重写的方法进行初始化操作
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -38,17 +37,17 @@ abstract class UnoBaseFragment : Fragment() {
         initLogTag(this::class.java.simpleName)
         // Toolbar都放入Fragment里了.
         setHasOptionsMenu(true)
+        // mActivity
+        mActivity = activity as UnoBaseActivity
+
         logger("on fragment create")
         return inflater.inflate(layoutRes(), container, false)
                 .also { mRoot = it }
                 .also {
                     // Toolbar设置为导航栏
-                    val parent = activity as UnoBaseActivity
                     mToolbar = findViewById(R.id.toolbar)
-                    parent.setSupportActionBar(mToolbar)
-                    mSupportActionBar = parent.supportActionBar
-                    logger("toolbar = $mToolbar")
-                    logger("supportActionBar = $mSupportActionBar")
+                    mActivity.setSupportActionBar(mToolbar)
+                    mSupportActionBar = mActivity.supportActionBar
                 }
                 .also { initViews(it) }
     }
@@ -69,10 +68,30 @@ abstract class UnoBaseFragment : Fragment() {
     }
 
     /** 从Root中查找View */
-    protected fun <T : View> findViewById(@IdRes id: Int): T? {
+    private fun <T : View> findViewById(@IdRes id: Int): T? {
         return mRoot.findViewById(id)
     }
 
+    /** 简化版findViewById */
+    protected fun getView(@IdRes id: Int): View {
+        return mRoot.findViewById(id)
+    }
 
+    // ------------------------------------------------------------------------------
+    //                              Toolbar Menu
+    // ------------------------------------------------------------------------------
+
+    /** Toolbar的菜单文件, R.menu.x */
+    protected abstract fun menuRes(): Int
+    /** Toolbar的项被选中时的响应方案 */
+    protected abstract fun onMenuItemSelected(itemId: Int): Boolean
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(menuRes(), menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return onMenuItemSelected(item.itemId)
+    }
 }
 

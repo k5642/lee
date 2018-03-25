@@ -1,4 +1,4 @@
-package com.beuno.beuno.page.main
+package com.beuno.beuno.page.activities
 
 import android.os.Bundle
 import android.view.Menu

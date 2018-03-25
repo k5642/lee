@@ -3,14 +3,13 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/homepage_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/bgGeneral"
     tools:context="com.beuno.beuno.page.homepage.HomepageFragment">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/main_appbar"
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -26,11 +25,11 @@
                 android:id="@+id/banner_bg"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/homepage_banner_bg_height"
+                android:background="@color/bgGeneral"
                 android:contentDescription="@string/default_img_description"
-                android:minHeight="100dp"
+                android:minHeight="@dimen/toolbar_min_height"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/home_banner_bg"
-                android:background="@color/bg"
                 app:layout_collapseMode="parallax"
                 app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
 
@@ -43,7 +42,7 @@
                 android:scaleType="fitXY"
                 android:src="@mipmap/home_banner"
                 app:layout_collapseMode="parallax"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"  />
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -61,53 +60,73 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg"
+        android:background="@color/bgGeneral"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/list_category"
+            <android.support.v7.widget.CardView
+                android:id="@+id/holder_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:elevation="@dimen/elevation_light"
                 android:padding="@dimen/margin_16"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+                app:layout_constraintTop_toBottomOf="parent">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/list_brand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_8"
-                android:background="@mipmap/home_brand_bg"
-                android:paddingBottom="@dimen/margin_24"
-                android:paddingLeft="@dimen/margin_24"
-                android:paddingRight="@dimen/margin_24"
-                android:paddingTop="@dimen/homepage_brand_label_height"
-                app:layout_constraintTop_toBottomOf="@id/list_category" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/list_recommend"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_8"
-                android:background="@mipmap/home_brand_bg"
-                android:paddingBottom="@dimen/margin_8"
-                android:paddingLeft="@dimen/margin_8"
-                android:paddingRight="@dimen/margin_8"
-                android:paddingTop="@dimen/homepage_brand_label_height"
-                app:layout_constraintTop_toBottomOf="@id/list_brand" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/white" />
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/bottom_holder"
+                android:id="@+id/holder_brand"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/bottom_nav_height"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:elevation="@dimen/elevation_light"
+                android:paddingStart="@dimen/margin_24"
+                android:paddingEnd="@dimen/margin_24"
+                app:layout_constraintTop_toBottomOf="@id/holder_category">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_brand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/margin_16"
+                    android:paddingEnd="@dimen/margin_16"
+                    android:layout_gravity="center"
+                    android:background="@drawable/home_brand_bg" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/holder_recommend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:elevation="@dimen/elevation_light"
+                android:paddingStart="@dimen/margin_8"
+                android:paddingEnd="@dimen/margin_8"
+                app:layout_constraintTop_toBottomOf="@id/holder_brand">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_recommend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/home_brand_bg" />
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:id="@+id/bottom_holder"
+                style="@style/BottomHolder"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/list_recommend" />
+                app:layout_constraintTop_toBottomOf="@id/holder_recommend" />
 
         </android.support.constraint.ConstraintLayout>
 

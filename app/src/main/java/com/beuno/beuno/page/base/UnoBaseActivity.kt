@@ -30,16 +30,18 @@ abstract class UnoBaseActivity : AppCompatActivity() {
         // 设置为全屏模式, 真全屏就是Toolbar可变的效果
         PluginActivity.setFullScreen(this)
         // 其他自定义的初始化操作
+        beforeSetup(savedInstanceState)
         setup(savedInstanceState)
     }
 
+    /** 用于继承扩展 */
+    protected open fun beforeSetup(savedInstanceState: Bundle?) {}
+
     /** 开启新的Activity, 并选择是否结束当前的
      * @return 纯属方便使用 */
-    fun startActivity(cls: Class<*>, selfFinish: Boolean = false): Boolean {
+    fun startActivity(cls: Class<*>): Boolean {
         val intent = Intent(this, cls)
         startActivity(intent)
-        if (selfFinish)
-            finish()
         return true
     }
 }

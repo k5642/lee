@@ -1,4 +1,4 @@
-package com.beuno.beuno.widgets
+package com.beuno.beuno.widgets.custom
 
 import android.content.Context
 import android.graphics.Canvas

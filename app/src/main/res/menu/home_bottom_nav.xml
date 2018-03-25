@@ -13,7 +13,7 @@
         android:icon="@drawable/nav_3_selector"
         android:title="@string/homepage_bottom_navigation_4" />
     <item
-        android:id="@+id/myself"
+        android:id="@+id/self"
         android:icon="@drawable/nav_4_selector"
         android:title="@string/homepage_bottom_navigation_5" />
 </menu>

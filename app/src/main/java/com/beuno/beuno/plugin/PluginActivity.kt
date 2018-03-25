@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import com.beuno.beuno.R
 import com.beuno.beuno.shortcut.getSize
 import com.beuno.beuno.shortcut.logger
@@ -62,6 +63,22 @@ object PluginActivity {
     }
 
     /**
+     * 弹出键盘
+     */
+    fun showKeyboard(activity: Activity) {
+        val inputManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+    }
+
+    /**
+     * 收起键盘
+     */
+    fun hideKeyboard(activity: Activity) {
+        val inputManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0)
+    }
+
+    /**
      * 将状态栏融入最上层的View
      */
     fun adjustTopView(activity: Activity, view: View) {
@@ -75,7 +92,7 @@ object PluginActivity {
     /**
      * 获取状态栏高度
      */
-    private fun getStatusBarHeight(activity: Activity): Int {
+    fun getStatusBarHeight(activity: Activity): Int {
         return Rect()
                 .also { activity.window.decorView.getWindowVisibleDisplayFrame(it) }
                 .top

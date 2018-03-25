@@ -1,4 +1,4 @@
-package com.beuno.beuno.page.main
+package com.beuno.beuno.page.activities
 
 import com.beuno.beuno.manager.user.UserViewModel
 import com.beuno.beuno.page.base.BasePresenter

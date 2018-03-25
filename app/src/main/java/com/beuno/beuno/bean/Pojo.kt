@@ -1,5 +1,6 @@
 package com.beuno.beuno.bean
 
+import android.support.annotation.ColorInt
 import com.google.gson.JsonObject
 import java.io.Serializable
 
@@ -96,8 +97,19 @@ data class UnoCategory(
         val name: String,
         /** 英文名 */
         val engName: String,
+        val pic: Int,
+        @ColorInt val bg: Int,
+        val subCategory: List<UnoCategorySub>
+) : UnoBean()
+
+/** 商品分类 */
+data class UnoCategorySub(
+        val id: Int,
+        val name: String,
         val pic: Int
 ) : UnoBean()
+
+
 
 /** 地址 */
 data class UnoAddress(

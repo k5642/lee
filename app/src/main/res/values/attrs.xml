@@ -5,4 +5,9 @@
         <attr name="exampleColor" format="color" />
         <attr name="exampleDrawable" format="color|reference" />
     </declare-styleable>
+
+    <declare-styleable name="UnoItemSelf">
+        <attr name="img" format="color|reference" />
+        <attr name="txt" format="string" />
+    </declare-styleable>
 </resources>

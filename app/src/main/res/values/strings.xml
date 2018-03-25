@@ -1,16 +1,22 @@
 <resources>
     <!-- basic -->
     <string name="app_name">BEUNO</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_test">Test</string>
     <string name="fps">0.0 FPS</string>
     <string name="empty">.</string>
+
+    <!-- action -->
+    <string name="action_settings">设置</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_test">Test</string>
+    <string name="action_share">Share</string>
+    <string name="action_clear">Clear</string>
 
     <!-- label -->
     <string name="label_test">Test</string>
     <string name="label_gl">GL</string>
     <string name="label_cpp">C++</string>
     <string name="label_sec">Second</string>
+    <string name="label_cart">购物车</string>
 
     <!-- template -->
     <string name="test">test</string>
@@ -40,8 +46,29 @@
 
     <!-- title -->
     <string name="title_activity_base">BaseActivity</string>
+    <string name="title_category">分类</string>
     <string name="hello_blank_fragment">hello_blank_fragment</string>
     <string name="title_activity_settings">Settings</string>
+
+    <!-- search -->
+    <string name="search_hint">请输入要查找的内容</string>
+
+    <!-- cart -->
+    <string name="cart_select_all">全选</string>
+    <string name="cart_count_all">合计</string>
+    <string name="cart_money">￥%.2f</string>
+    <string name="cart_with_postage">(不含邮费)</string>
+    <string name="cart_btn">结算(%d)</string>
+
+    <!-- self -->
+    <string name="self_orders">全部订单</string>
+    <string name="self_pay">待付款</string>
+    <string name="self_delivery">已发货</string>
+    <string name="self_after_service">售后</string>
+    <string name="self_collect">收藏</string>
+    <string name="self_history">浏览记录</string>
+    <string name="self_service">客服</string>
+
 
     <!-- Settings -->
     <string name="settings_account">账户安全</string>
