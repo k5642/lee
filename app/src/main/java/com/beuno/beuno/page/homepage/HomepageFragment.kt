@@ -3,8 +3,10 @@ package com.beuno.beuno.page.homepage
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.beuno.beuno.R
+import com.beuno.beuno.alpha.UnoPage
 import com.beuno.beuno.page.base.UnoBaseFragment
-import com.beuno.beuno.page.level_2_fragment.NoticeFragment
+import com.beuno.beuno.page.single_page.NoticeActivity
+import com.beuno.beuno.page.single_page.SearchActivity
 import com.beuno.beuno.plugin.PluginActivity
 import com.beuno.beuno.shortcut.isNull
 import com.beuno.beuno.shortcut.logger
@@ -21,6 +23,12 @@ import com.beuno.beuno.widgets.adapters.UnoAdapters.initGridAdapter
  * todo 推荐商品 等UI
  */
 class HomepageFragment : UnoBaseFragment() {
+    override fun explorer(pageID: Int) {
+        when (pageID) {
+            UnoPage.PageID.ID_NOTICE -> NoticeActivity::class.java.switchActivity()
+            UnoPage.PageID.ID_SEARCH -> SearchActivity::class.java.switchActivity()
+        }
+    }
 
     private lateinit var mCategoryList: RecyclerView
     private lateinit var mBrandList: RecyclerView
@@ -28,14 +36,6 @@ class HomepageFragment : UnoBaseFragment() {
 
     override fun layoutRes() = R.layout.fragment_homepage
     override fun menuRes() = R.menu.menu_homepage
-
-    override fun onMenuItemSelected(itemId: Int): Boolean {
-        when (itemId) {
-            R.id.action_search -> logger("searching")
-            R.id.action_notice -> startSecondActivity(NoticeFragment())
-        }
-        return true
-    }
 
     override fun initViews(root: View) {
         if (activity.isNull()) {

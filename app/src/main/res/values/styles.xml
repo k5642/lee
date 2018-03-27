@@ -22,13 +22,32 @@
 
     <style name="Button.Basic" parent="Base.TextAppearance.AppCompat.Button">
         <item name="android:textSize">@dimen/txt_huge</item>
-        <item name="android:background">@drawable/btn_basic_selector</item>
+        <item name="android:background">@drawable/btn_accent_selector</item>
+    </style>
+
+    <style name="Button.Basic.Long" parent="Button.Basic">
+        <item name="android:textSize">@dimen/txt_huge</item>
+        <item name="android:background">@drawable/btn_accent_selector</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/long_rect_height</item>
     </style>
 
-    <style name="Toolbar.TitleText"
-        parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+    <style name="Button.Basic.Short" parent="Button.Basic">
+        <item name="android:textSize">@dimen/txt_huge</item>
+        <item name="android:background">@drawable/btn_accent_selector</item>
+        <item name="android:layout_width">@dimen/long_rect_width</item>
+        <item name="android:layout_height">@dimen/long_rect_height</item>
+    </style>
+
+    <style name="Button.Basic.Short.Red" parent="Button.Basic.Short">
+        <item name="android:textSize">@dimen/txt_huge</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/btn_red_selector</item>
+        <item name="android:layout_width">@dimen/long_rect_width</item>
+        <item name="android:layout_height">@dimen/long_rect_height</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#a000</item>
     </style>
@@ -60,5 +79,9 @@
         <item name="android:layout_gravity">bottom</item>
         <item name="android:background">@color/bgBottomNav</item>
     </style>
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

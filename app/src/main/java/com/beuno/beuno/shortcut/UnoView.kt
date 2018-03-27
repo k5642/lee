@@ -62,6 +62,7 @@ fun View.setSizeListener(onMeasure: (width: Int, height: Int) -> Unit) {
                 }
             }
     )
+    val view: View
 }
 
 /**

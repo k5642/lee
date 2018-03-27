@@ -267,3 +267,30 @@ class CategoryLevel2Adapter(private val mContext: Context, private val mList: Li
         }
     }
 }
+
+/** 购物车 */
+class CartHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val txt: TextView by lazy { itemView.findViewById(R.id.item_txt) as TextView }
+    val img: ImageView by lazy { itemView.findViewById(R.id.item_img) as ImageView }
+    val price: TextView by lazy { itemView.findViewById(R.id.item_price) as TextView }
+    val charge: TextView by lazy { itemView.findViewById(R.id.item_charge) as TextView }
+    val discount: TextView by lazy { itemView.findViewById(R.id.item_discount) as TextView }
+}
+
+class CartAdapter(private val mContext: Context) : RecyclerView.Adapter<CartHolder>() {
+    private val mList = UnoConstants.HOMEPAGE_RECOMMEND_LIST
+    override fun getItemCount(): Int = mList.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartHolder {
+        return LayoutInflater.from(mContext)
+                .run { inflate(R.layout.item_adapter_homepage_recommend, parent, false) }
+                .let { CartHolder(it) }
+    }
+
+    override fun onBindViewHolder(holder: CartHolder, position: Int) {
+        mList[position].apply {
+            //            holder.txt.text = second
+//            holder.img.setImageResource(first)
+            holder.price.bold()
+        }
+    }
+}

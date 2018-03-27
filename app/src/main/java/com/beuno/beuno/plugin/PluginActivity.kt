@@ -30,6 +30,11 @@ object PluginActivity {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    /** 设置ActionBar的标题 */
+    fun setSupportActionBarTitle(supportActionBar: ActionBar?, title: String) {
+        supportActionBar?.title = title
+    }
+
     /** 设置Toolbar左侧导航键 */
     fun setToolBarNavigationButton(toolbar: Toolbar, @DrawableRes icon: Int, onClick: () -> Unit) {
         toolbar.setNavigationIcon(icon)
@@ -44,8 +49,7 @@ object PluginActivity {
     }
 
     /** 启用沉浸式全屏模式, 设置状态栏背景, 由最上方的View延伸得到 */
-    fun setFullScreen(activity: Activity) {
-        logger("setting full screen")
+    fun modeFullScreen(activity: Activity) {
         activity.window.apply {
             //清除了这个, 就能让 ContentView 不向上了
 //            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -62,12 +66,20 @@ object PluginActivity {
                 .also { it?.fitsSystemWindows = false }
     }
 
+    /** 非全屏模式 */
+    fun modeNotFullScreen(activity: Activity) {
+        activity.window.apply {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            statusBarColor = activity.resources.getColor(R.color.colorPrimaryDark)
+        }
+    }
+
     /**
      * 弹出键盘
      */
     fun showKeyboard(activity: Activity) {
         val inputManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+        inputManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
     }
 
     /**
@@ -75,7 +87,8 @@ object PluginActivity {
      */
     fun hideKeyboard(activity: Activity) {
         val inputManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0)
+        if (inputManager.isActive)
+            inputManager.toggleSoftInput(0, 0)
     }
 
     /**

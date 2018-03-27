@@ -12,10 +12,17 @@ import com.beuno.beuno.R
 import com.beuno.beuno.page._extra.gl.UnoGLActivity
 import com.beuno.beuno.page._extra.teapot.TeapotNativeActivity
 import com.beuno.beuno.page.base.UnoBaseActivity
+import com.beuno.beuno.page.base.UnoBaseFragment
+import com.beuno.beuno.page.base.UnoTestFragment
 import com.beuno.beuno.shortcut.logger
+import com.beuno.beuno.shortcut.toFragment
 import kotlinx.android.synthetic.main.activity_test.*
 
 class TestActivity : UnoBaseActivity() {
+    override fun defaultFragment(): Class<UnoBaseFragment> {
+        return UnoTestFragment::class.java.toFragment()
+    }
+
     override fun layoutRes(): Int = R.layout.activity_test
     override fun setup(savedInstanceState: Bundle?) {
         setupDrawer()
@@ -27,9 +34,9 @@ class TestActivity : UnoBaseActivity() {
             parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
             logger("Drawer Listener Params: $parent, $view, $position, $id")
             when (position) {
-                0 -> startActivity(UnoGLActivity::class.java)
+                0 -> UnoGLActivity::class.java.startActivityForTest()
                 1 -> logger("C++")
-                2 -> startActivity(TeapotNativeActivity::class.java)
+                2 -> TeapotNativeActivity::class.java.startActivityForTest()
                 else -> logger("Else")
             }
         }

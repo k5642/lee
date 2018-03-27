@@ -8,6 +8,11 @@ import com.beuno.beuno.bean.UnoCategorySub
  * 系统级配置的敏感数据放这里，后期直接加密
  */
 object UnoConstants {
+
+    // ------------------------------------------------------------------------------
+    //                              假数据
+    // ------------------------------------------------------------------------------
+
     val HOMEPAGE_CATEGORY_LIST = listOf(
             Pair(R.mipmap.home_icon_screw, "螺钉"),
             Pair(R.mipmap.home_icon_bolt, "螺栓"),

@@ -17,6 +17,7 @@
     <string name="label_cpp">C++</string>
     <string name="label_sec">Second</string>
     <string name="label_cart">购物车</string>
+    <string name="label_notice">消息通知</string>
 
     <!-- template -->
     <string name="test">test</string>
@@ -55,10 +56,12 @@
 
     <!-- cart -->
     <string name="cart_select_all">全选</string>
-    <string name="cart_count_all">合计</string>
+    <string name="cart_count_all">合计:</string>
     <string name="cart_money">￥%.2f</string>
     <string name="cart_with_postage">(不含邮费)</string>
     <string name="cart_btn">结算(%d)</string>
+    <string name="cart_btn_delete">删除</string>
+    <string name="cart_btn_collect">收藏</string>
 
     <!-- self -->
     <string name="self_orders">全部订单</string>
@@ -147,6 +150,7 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_cart">CartActivity</string>
 
 
 </resources>

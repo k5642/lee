@@ -36,6 +36,7 @@ class SearchingInsideToolbar @JvmOverloads constructor(context: Context, attrs: 
     override fun onFinishInflate() {
         super.onFinishInflate()
         inflate(context, R.layout.merge_search, this)
+        getInputFocus()
     }
 
     fun getInputFocus() {

@@ -10,10 +10,17 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.beuno.beuno.R
 import com.beuno.beuno.page.base.UnoBaseActivity
+import com.beuno.beuno.page.base.UnoBaseFragment
+import com.beuno.beuno.page.base.UnoTestFragment
 import com.beuno.beuno.shortcut.logger
+import com.beuno.beuno.shortcut.toFragment
 import kotlinx.android.synthetic.main.activity_uno_gl.*
 
 class UnoGLActivity : UnoBaseActivity() {
+    override fun defaultFragment(): Class<UnoBaseFragment> {
+        return UnoTestFragment::class.java.toFragment()
+    }
+
     override fun layoutRes(): Int = R.layout.activity_uno_gl
     override fun setup(savedInstanceState: Bundle?) {
         setupDrawer()

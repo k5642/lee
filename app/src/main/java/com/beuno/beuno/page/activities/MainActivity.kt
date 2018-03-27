@@ -1,60 +1,55 @@
 package com.beuno.beuno.page.activities
 
-import android.app.Fragment
 import android.os.Bundle
-import android.support.annotation.IdRes
 import android.view.MenuItem
 import com.beuno.beuno.R
-import com.beuno.beuno.page.base.UnoBaseActivity
-import com.beuno.beuno.page.homepage.CartFragment
+import com.beuno.beuno.alpha.UnoPage
+import com.beuno.beuno.page.base.UnoBaseFragment
+import com.beuno.beuno.page.base.UnoBaseFullScreenActivity
+import com.beuno.beuno.page.base.UnoDefaultFragment
+import com.beuno.beuno.page.cart.CartActivity
 import com.beuno.beuno.page.homepage.CategoryFragment
 import com.beuno.beuno.page.homepage.HomepageFragment
 import com.beuno.beuno.page.homepage.SelfFragment
 import com.beuno.beuno.shortcut.logger
+import com.beuno.beuno.shortcut.toActivity
+import com.beuno.beuno.shortcut.toFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
- * 主页的Activity容器
- *
- * todo 跳转逻辑太不优雅
+ * 主页Activity容器
  */
-class MainActivity : UnoBaseActivity() {
-
-    private val mFragmentMap = mutableMapOf<Int, Fragment>()
-    private var mContent : Fragment? = null
+class MainActivity : UnoBaseFullScreenActivity() {
 
     // 测试用
     private fun quickEntry() {
 //        startActivity(UnoGLActivity::class.java, true)
     }
 
-    override fun onAttachFragment(fragment: Fragment?) {
-        super.onAttachFragment(fragment)
-        if (fragment == null) return
-        val id = getFragmentId(fragment)
-        if (mFragmentMap[id] == null)
-            mFragmentMap[id] = fragment
-        mContent = fragment
+    override fun defaultFragment(): Class<UnoBaseFragment> {
+        return HomepageFragment::class.java.toFragment()
     }
 
-    private fun getFragmentId(fragment: Fragment): Int {
-        return when (fragment) {
-            is HomepageFragment -> R.id.homepage
-            is CategoryFragment -> R.id.category
-            is CartFragment -> R.id.cart
-            is SelfFragment -> R.id.self
-            else -> -1
+    /**
+     * 页面跳转逻辑, 底部工具栏的监听.
+     * 购物车需要切换Activity, 其余选项切换Fragment.
+     * @return 是否需要高亮选中项.
+     */
+    private fun alterFragment(item: MenuItem): Boolean {
+        val target = when (item.itemId) {
+            UnoPage.PageID.ID_CART -> CartActivity::class.java
+                    .also {
+                        switchActivity(it.toActivity())
+                        // 购物车不需要高亮, 这货有底部菜单, 所以当二级页面用吧.
+                        return false
+                    }
+            UnoPage.PageID.ID_HOMEPAGE -> HomepageFragment::class.java
+            UnoPage.PageID.ID_CATEGORY -> CategoryFragment::class.java
+            UnoPage.PageID.ID_SELF -> SelfFragment::class.java
+            else -> UnoDefaultFragment::class.java
         }
-    }
-
-    private fun getFragment(@IdRes itemId: Int): Fragment {
-        return when (itemId) {
-            R.id.homepage -> HomepageFragment()
-            R.id.category -> CategoryFragment()
-            R.id.cart -> CartFragment()
-            R.id.self -> SelfFragment()
-            else -> HomepageFragment()
-        }
+        switchFragment(target.toFragment())
+        return true
     }
 
     override fun layoutRes(): Int = R.layout.activity_main
@@ -64,37 +59,10 @@ class MainActivity : UnoBaseActivity() {
 
         logger("setup navigation view")
         home_navigation.setOnNavigationItemSelectedListener {
-            item: MenuItem ->
-            item.isChecked = true
-            val target = item.itemId.let {
-                mFragmentMap[it] ?: getFragment(it)
-            }
-            switchFragment(target)
-            true
+            alterFragment(it)
         }
-
-        logger("init with homepage fragment")
-        switchFragment(HomepageFragment())
 
         quickEntry()
-    }
-
-    private fun switchFragment(to: Fragment) {
-        val containerViewId = R.id.container
-        val transaction = fragmentManager.beginTransaction()
-        if (mContent !== to) {
-            // 先判断是否被add过
-            if (!to.isAdded) {
-                // 隐藏当前的fragment，add下一个到Activity中
-                transaction.hide(mContent).add(containerViewId, to).commit()
-            } else {
-                // 隐藏当前的fragment，显示下一个
-                transaction.hide(mContent).show(to).commit()
-                // 返回时, 触发onResume, 目前用于确保全屏与Toolbar的切换
-                to.onResume()
-            }
-        }
-        mContent = to
     }
 
     // ------------------------------------------------------------------------------
@@ -104,7 +72,7 @@ class MainActivity : UnoBaseActivity() {
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
-    private fun stringFromJNI(): String = "Uno"
+//    private fun stringFromJNI(): String = "Uno"
 //    external fun stringFromJNI(): String
 //    companion object {
 //

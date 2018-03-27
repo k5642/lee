@@ -49,8 +49,11 @@
         <activity
             android:name=".page.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".page.activities.SubLevelActivity" />
-        <activity android:name=".page.activities.SearchActivity"></activity>
+        <activity android:name=".page.single_page.SearchActivity" />
+        <activity
+            android:name=".page.cart.CartActivity" />
+        <activity android:name=".page.base.UnoDefaultActivity" />
+        <activity android:name=".page.single_page.NoticeActivity" />
     </application>
 
 </manifest>

@@ -12,8 +12,13 @@ LiveData:
 
 Agera:
     Google的响应库.
+ */
 
-
+/*
+架构:
+    UnoBaseActivity
+        全屏 & 非全屏的.
+    UnoBaseFragment
  */
 
 object IdLiveData : LiveData<Int>()

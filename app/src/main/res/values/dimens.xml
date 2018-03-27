@@ -1,5 +1,6 @@
 <resources>
     <!--general-->
+    <dimen name="zero">0dp</dimen>
     <dimen name="elevation_light">4dp</dimen>
     <dimen name="elevation_deep">8dp</dimen>
     <dimen name="margin_4">4dp</dimen>
@@ -42,6 +43,7 @@
     <dimen name="txt_large">16sp</dimen>
     <dimen name="txt_main">14sp</dimen>
     <dimen name="txt_description">12sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 
 </resources>
