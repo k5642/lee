@@ -7,7 +7,7 @@ import com.beuno.beuno.alpha.UnoPage
 import com.beuno.beuno.page.base.UnoBaseFragment
 import com.beuno.beuno.page.base.UnoBaseFullScreenActivity
 import com.beuno.beuno.page.base.UnoDefaultFragment
-import com.beuno.beuno.page.cart.CartActivity
+import com.beuno.beuno.page.single_page.CartActivity
 import com.beuno.beuno.page.homepage.CategoryFragment
 import com.beuno.beuno.page.homepage.HomepageFragment
 import com.beuno.beuno.page.homepage.SelfFragment

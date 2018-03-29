@@ -1,5 +1,7 @@
 package com.beuno.beuno.shortcut
 
+import android.text.TextUtils
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver

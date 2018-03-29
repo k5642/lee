@@ -10,7 +10,7 @@
     <com.beuno.beuno.widgets.SearchingOutsideToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="?android:attr/actionBarSize"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_24"
         android:elevation="@dimen/margin_8"
@@ -42,7 +42,7 @@
 
             <View
                 android:id="@+id/bottom_holder"
-                style="@style/BottomHolder" />
+                style="@style/BottomHolder.Nav" />
 
         </LinearLayout>
 

@@ -2,11 +2,12 @@
     <!-- basic -->
     <string name="app_name">BEUNO</string>
     <string name="fps">0.0 FPS</string>
-    <string name="empty">.</string>
+    <string name="empty"> </string>
 
     <!-- action -->
     <string name="action_settings">设置</string>
     <string name="action_edit">编辑</string>
+    <string name="action_finish">完成</string>
     <string name="action_test">Test</string>
     <string name="action_share">Share</string>
     <string name="action_clear">Clear</string>
@@ -57,7 +58,7 @@
     <!-- cart -->
     <string name="cart_select_all">全选</string>
     <string name="cart_count_all">合计:</string>
-    <string name="cart_money">￥%.2f</string>
+    <string name="cart_cash">￥%.2f</string>
     <string name="cart_with_postage">(不含邮费)</string>
     <string name="cart_btn">结算(%d)</string>
     <string name="cart_btn_delete">删除</string>

@@ -1,0 +1,38 @@
+<com.beuno.beuno.widgets.UnoFloatingCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/general_large_view_height"
+    android:layout_margin="@dimen/margin_16"
+    android:elevation="@dimen/elevation_light"
+    app:layout_anchor="@id/appbar"
+    app:layout_anchorGravity="bottom|center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_8"
+        android:layout_height="match_parent">
+
+        <Button
+            style="@style/SelfFloatingButton"
+            android:drawableTop="@mipmap/mine_icon_orders"
+            android:text="@string/self_orders" />
+
+        <Button
+            style="@style/SelfFloatingButton"
+            android:drawableTop="@mipmap/mine_icon_pay"
+            android:text="@string/self_pay" />
+
+        <Button
+            style="@style/SelfFloatingButton"
+            android:drawableTop="@mipmap/mine_icon_delivery"
+            android:text="@string/self_delivery" />
+
+        <Button
+            style="@style/SelfFloatingButton"
+            android:drawableTop="@mipmap/mine_icon_afterservice"
+            android:text="@string/self_after_service" />
+
+    </LinearLayout>
+
+</com.beuno.beuno.widgets.UnoFloatingCardView>

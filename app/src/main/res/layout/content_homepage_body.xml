@@ -1,0 +1,60 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/holder_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/elevation_light"
+        android:padding="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/bgItem" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/holder_brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:elevation="@dimen/elevation_light"
+        android:paddingEnd="@dimen/margin_24"
+        android:paddingStart="@dimen/margin_24"
+        app:layout_constraintTop_toBottomOf="@id/holder_category">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_brand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/home_brand_bg"
+            android:paddingEnd="@dimen/margin_16"
+            android:paddingStart="@dimen/margin_16" />
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/holder_recommend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:elevation="@dimen/elevation_light"
+        android:paddingEnd="@dimen/margin_8"
+        android:paddingStart="@dimen/margin_8"
+        app:layout_constraintTop_toBottomOf="@id/holder_brand">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/home_brand_bg" />
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

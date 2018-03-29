@@ -1,10 +1,13 @@
 package com.beuno.beuno.page.single_page
 
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.beuno.beuno.R
 import com.beuno.beuno.page.base.UnoBackwardFragment
 import com.beuno.beuno.page.base.UnoBaseSimpleActivity
 import com.beuno.beuno.shortcut.toFragment
+import com.beuno.beuno.widgets.adapters.NoticeAdapter
+import com.beuno.beuno.widgets.adapters.UnoAdapters
 
 /**
  * 消息页,
@@ -24,10 +27,13 @@ class NoticeFragment : UnoBackwardFragment() {
         finish()
     }
 
+    private lateinit var mNoticeList: RecyclerView
+
     override fun menuRes() = R.menu.menu_no_action
     override fun layoutRes(): Int = R.layout.fragment_notice
 
     override fun initViews(root: View) {
-
+        mNoticeList = UnoAdapters.initLinearAdapter(root, R.id.list_notice,
+                activity!!, RecyclerView.VERTICAL, NoticeAdapter::class.java)
     }
 }

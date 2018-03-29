@@ -16,7 +16,6 @@ class UnoFloatingCardView
     : CardView(context, attrs), CoordinatorLayout.AttachedBehavior {
     private val mContext: Context = context
     private val mAttrs: AttributeSet? = attrs
-
     override fun getBehavior() = UnoFloatingCardViewBehavior(mContext, mAttrs)
 }
 
@@ -31,9 +30,10 @@ class UnoFloatingCardViewBehavior
 
     override fun layoutDependsOn(parent: CoordinatorLayout?, child: CardView?, dependency: View?): Boolean {
         // 确认被观察者是AppBarLayout
-        val rtn = dependency is AppBarLayout
-        if (rtn && child != null && mBaseHeight == 0) mBaseHeight = child.height
-        return rtn
+        return (dependency is AppBarLayout).also {
+            // 确认mBaseHeight只被赋值一次.
+            if (it && child != null && mBaseHeight == 0) mBaseHeight = child.height
+        }
     }
 
     override fun onDependentViewChanged(parent: CoordinatorLayout?, child: CardView?, dependency: View?): Boolean {
@@ -45,19 +45,15 @@ class UnoFloatingCardViewBehavior
 
     /**
      * 基于被观察者, 变更自身高度.
-     * 目前的逻辑是, 前三分之一不动, 中间三分之一缩短, 最后三分之一消失.
-     * todo 这个逻辑需要优化, 不优雅
      */
     private fun changeHeight(child: CardView, dependency: View) {
-        val height = dependency.height
-        val distance = -dependency.y
-        val lp = child.layoutParams
-        lp.height = when {
-            distance > height / 3 * 2-> 0
-            distance < height / 3 -> mBaseHeight
-            else -> ((height / 3 * 2 - distance) / (height / 3) * mBaseHeight).toInt()
+        // Toolbar开始收缩时, 当前View就开始收缩.
+        val toolbarMovingDistance = -dependency.y
+        val lpThis = child.layoutParams.apply {
+            val heightThis = mBaseHeight - toolbarMovingDistance.toInt()
+            height = if (heightThis < 0) 0 else heightThis
         }
-        child.layoutParams = lp
-        logger("${child.height} height, $distance distance, $height height, $mBaseHeight baseHeight")
+        child.layoutParams = lpThis
+        logger("${child.height} height, $toolbarMovingDistance distance, $mBaseHeight baseHeight")
     }
 }

@@ -33,7 +33,7 @@ abstract class UnoBaseFragment : Fragment() {
     //                                General
     // ------------------------------------------------------------------------------
 
-    protected lateinit var mRoot: View
+    private lateinit var mRoot: View
     protected lateinit var mActivity: UnoBaseActivity
 
     // 创建时调用子类重写的方法进行初始化操作
@@ -44,7 +44,6 @@ abstract class UnoBaseFragment : Fragment() {
         // mActivity
         mActivity = activity as UnoBaseActivity
 
-        logger("on fragment create")
         return inflater.inflate(layoutRes(), container, false)
                 .also { mRoot = it }
                 .also { beforeInitViews(it) }
@@ -56,8 +55,10 @@ abstract class UnoBaseFragment : Fragment() {
      * @return 目标ID是否被使用, 用于When-Else结构
      */
     protected abstract fun explorer(pageID: Int)
+
     /** 子类需提供布局文件, 用于初始化 */
     protected abstract fun layoutRes(): Int
+
     /** 子类的控件初始化 */
     protected abstract fun initViews(root: View)
 
@@ -67,7 +68,7 @@ abstract class UnoBaseFragment : Fragment() {
     }
 
     /** 简化版findViewById */
-    protected fun getView(@IdRes id: Int): View {
+    fun getView(@IdRes id: Int): View {
         return mRoot.findViewById(id)
     }
 
@@ -80,7 +81,7 @@ abstract class UnoBaseFragment : Fragment() {
     // ------------------------------------------------------------------------------
 
     protected var mSupportActionBar: ActionBar? = null
-    protected var mToolbar: Toolbar? = null
+    var mToolbar: Toolbar? = null
 
     protected open fun beforeInitViews(root: View) {
         setHasOptionsMenu(true)
@@ -133,12 +134,16 @@ abstract class UnoBackwardFragment : UnoBaseFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return (item.itemId == UnoPage.PageID.ID_BACKWARD)
-                .also { if (it) onBackward() }
+        if (item.itemId == UnoPage.PageID.ID_BACKWARD)
+            onBackward()
+        else
+            explorer(item.itemId)
+        return true
     }
 
     /** 页面的返回逻辑 */
     abstract fun onBackward()
+
     /** Toolbar的页面标题 */
     abstract fun title(): String
 }
@@ -223,6 +228,7 @@ class UnoDefaultFragment : UnoBaseFragment() {
     override fun layoutRes(): Int {
         throw UnoError.ErrorDefaultFragment()
     }
+
     override fun menuRes(): Int {
         throw UnoError.ErrorDefaultFragment()
     }

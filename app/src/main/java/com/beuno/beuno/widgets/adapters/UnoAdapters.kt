@@ -9,11 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.TextView
 import com.beuno.beuno.R
 import com.beuno.beuno.alpha.UnoConstants
 import com.beuno.beuno.bean.UnoCategorySub
-import com.beuno.beuno.shortcut.bold
 import com.beuno.beuno.shortcut.logger
 import com.beuno.beuno.shortcut.snack
 
@@ -62,8 +62,12 @@ private object ItemStatus {
 
     /** 点击父项时, 关闭当前打开的子项, 开启新的子项 */
     fun trigger(adapter: RecyclerView.Adapter<*>, indexTriggered: Int) {
-        logger("trigger $indexTriggered", true)
-        if (indexTriggered == indexParent) return
+        logger("trigger $indexTriggered")
+        if (indexTriggered == indexParent) {
+            adapter.notifyItemRemoved(indexParent + 1)
+            indexParent = INDEX_PARENT_DEFAULT
+            return
+        }
         if (hasChild())
             adapter.notifyItemRemoved(indexParent + 1)
         adapter.notifyItemInserted(indexTriggered + 1)
@@ -160,7 +164,6 @@ class HomepageRecommendAdapter(private val mContext: Context) : RecyclerView.Ada
         mList[position].apply {
             //            holder.txt.text = second
 //            holder.img.setImageResource(first)
-            holder.price.bold()
         }
     }
 }
@@ -208,7 +211,7 @@ class CategoryAdapter(private val mContext: Context) : RecyclerView.Adapter<Recy
             val positionParent = if (ItemStatus.hasChild() && position > ItemStatus.indexFather()) position - 1
             else position
             mList[positionParent].apply {
-                holder.txt.bold().text = name
+                holder.txt.text = name
                 holder.img.setImageResource(pic)
                 holder.engName.text = engName
                 holder.itemView.setBackgroundColor(bg)
@@ -219,8 +222,7 @@ class CategoryAdapter(private val mContext: Context) : RecyclerView.Adapter<Recy
                     ItemStatus.trigger(this@CategoryAdapter, positionParent)
                 }
             }
-        }
-        else if (holder is CategorySubHolder) {
+        } else if (holder is CategorySubHolder) {
             holder.list.apply {
                 layoutManager = LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false)
                 adapter = CategoryLevel2Adapter(mContext, mList[position - 1].subCategory)
@@ -270,27 +272,71 @@ class CategoryLevel2Adapter(private val mContext: Context, private val mList: Li
 
 /** 购物车 */
 class CartHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val txt: TextView by lazy { itemView.findViewById(R.id.item_txt) as TextView }
+    val radio: RadioButton by lazy { itemView.findViewById(R.id.item_radio) as RadioButton }
+    val name: TextView by lazy { itemView.findViewById(R.id.item_name) as TextView }
+    val type: TextView by lazy { itemView.findViewById(R.id.item_type) as TextView }
     val img: ImageView by lazy { itemView.findViewById(R.id.item_img) as ImageView }
     val price: TextView by lazy { itemView.findViewById(R.id.item_price) as TextView }
-    val charge: TextView by lazy { itemView.findViewById(R.id.item_charge) as TextView }
-    val discount: TextView by lazy { itemView.findViewById(R.id.item_discount) as TextView }
+    val count: TextView by lazy { itemView.findViewById(R.id.item_count) as TextView }
+
+    /** 判定当前项是否已被选中 */
+    fun isSelected(): Boolean = radio.isChecked
+    /** 设置当前项是否选中 */
+    fun setRadioStatus(check: Boolean) {
+        if (radio.isChecked != check) radio.isChecked = check
+    }
 }
 
 class CartAdapter(private val mContext: Context) : RecyclerView.Adapter<CartHolder>() {
-    private val mList = UnoConstants.HOMEPAGE_RECOMMEND_LIST
+    private val mList = UnoConstants.CART_LIST
+
     override fun getItemCount(): Int = mList.size
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartHolder {
         return LayoutInflater.from(mContext)
-                .run { inflate(R.layout.item_adapter_homepage_recommend, parent, false) }
+                .run { inflate(R.layout.item_adapter_cart, parent, false) }
                 .let { CartHolder(it) }
     }
 
     override fun onBindViewHolder(holder: CartHolder, position: Int) {
         mList[position].apply {
             //            holder.txt.text = second
-//            holder.img.setImageResource(first)
-            holder.price.bold()
+            holder.img.setImageResource(pic)
+            holder.type.text = type
+            // 滚动字幕
+            holder.name.text = name
+            holder.price.text = "￥$price"
+            holder.count.text = "x$count"
+        }
+        holder.itemView.apply {
+            isClickable = true
+            setOnClickListener {
+                holder.radio.isChecked = !holder.radio.isChecked
+            }
+        }
+    }
+}
+
+/** 通知 */
+class NoticeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val timestamp: TextView by lazy { itemView.findViewById(R.id.item_timestamp) as TextView }
+    val title: TextView by lazy { itemView.findViewById(R.id.item_title) as TextView }
+    val content: TextView by lazy { itemView.findViewById(R.id.item_content) as TextView }
+}
+
+class NoticeAdapter(private val mContext: Context) : RecyclerView.Adapter<NoticeHolder>() {
+    private val mList = UnoConstants.NOTICE_LIST
+    override fun getItemCount(): Int = mList.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeHolder {
+        return LayoutInflater.from(mContext)
+                .run { inflate(R.layout.item_adapter_notice, parent, false) }
+                .let { NoticeHolder(it) }
+    }
+
+    override fun onBindViewHolder(holder: NoticeHolder, position: Int) {
+        mList[position].apply {
+            holder.timestamp.text = timestamp
+            holder.title.text = title
+            holder.content.text = content
         }
     }
 }

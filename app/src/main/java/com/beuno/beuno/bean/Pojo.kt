@@ -26,6 +26,14 @@ data class UnoMessage(
         val timestamp: String
 ) : UnoBean()
 
+/** 通知 */
+data class UnoNotice(
+        val id: Int,
+        val title: String,
+        val content: String,
+        val timestamp: String
+) : UnoBean()
+
 /** 买家信息 */
 data class UnoBuyer(
         val id: String,
@@ -139,3 +147,21 @@ data class UnoPicture(
 interface UnoDiscountStrategy {
     fun makeDiscount(origin: Float): Float
 }
+
+
+// ------------------------------------------------------------------------------
+//                           For Demo Only
+// ------------------------------------------------------------------------------
+
+/** 购物车里的商品 */
+data class UnoGoodsInCart(
+        val id: Int,
+        val name: String,
+        val type: String,
+        /** 单价 */
+        val price: Float,
+        /** 购买数量 */
+        val count: Int,
+        /** 图片路径 */
+        val pic: Int
+) : UnoBean()

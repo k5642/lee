@@ -1,0 +1,77 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_bar_general"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/bar_bottom_height"
+    android:layout_gravity="bottom"
+    android:layout_marginTop="@dimen/margin_8"
+    android:elevation="@dimen/elevation_light">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgGeneral"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@string/cart_select_all">
+
+        <RadioButton
+            android:id="@+id/cart_select_all"
+            style="@style/Text.Main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
+            android:text="@string/cart_select_all"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/cart_btn_pay"
+            style="@style/Button.Basic.Short"
+            android:text="@string/cart_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <TextView
+            android:id="@+id/cart_cash"
+            style="@style/Text.Large.Bold.Accent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_4"
+            android:paddingEnd="@dimen/margin_8"
+            android:paddingStart="@dimen/zero"
+            android:text="@string/cart_cash"
+            app:layout_constraintEnd_toStartOf="@id/cart_btn_pay"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cart_postage"
+            style="@style/Text.Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/margin_8"
+            android:paddingStart="@dimen/zero"
+            android:text="@string/cart_with_postage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cart_btn_pay"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cart_cash" />
+
+        <TextView
+            android:id="@+id/cart_count_label"
+            style="@style/Text.Large.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_4"
+            android:text="@string/cart_count_all"
+            app:layout_constraintEnd_toStartOf="@id/cart_cash"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

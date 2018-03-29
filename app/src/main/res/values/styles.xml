@@ -1,5 +1,9 @@
 <resources>
 
+    <!--
+                                    AppTheme
+    -->
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -20,45 +24,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="Button.Basic" parent="Base.TextAppearance.AppCompat.Button">
-        <item name="android:textSize">@dimen/txt_huge</item>
-        <item name="android:background">@drawable/btn_accent_selector</item>
-    </style>
-
-    <style name="Button.Basic.Long" parent="Button.Basic">
-        <item name="android:textSize">@dimen/txt_huge</item>
-        <item name="android:background">@drawable/btn_accent_selector</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/long_rect_height</item>
-    </style>
-
-    <style name="Button.Basic.Short" parent="Button.Basic">
-        <item name="android:textSize">@dimen/txt_huge</item>
-        <item name="android:background">@drawable/btn_accent_selector</item>
-        <item name="android:layout_width">@dimen/long_rect_width</item>
-        <item name="android:layout_height">@dimen/long_rect_height</item>
-    </style>
-
-    <style name="Button.Basic.Short.Red" parent="Button.Basic.Short">
-        <item name="android:textSize">@dimen/txt_huge</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_red_selector</item>
-        <item name="android:layout_width">@dimen/long_rect_width</item>
-        <item name="android:layout_height">@dimen/long_rect_height</item>
-    </style>
+    <!--
+                                    Others
+    -->
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#a000</item>
-    </style>
-
-    <style name="CardView.General" parent="CardView">
-        <item name="android:foreground">?attr/selectableItemBackground</item>
-        <item name="cardElevation">@dimen/elevation_light</item>
-        <item name="contentPaddingLeft">@dimen/margin_16</item>
-        <item name="contentPaddingRight">@dimen/margin_16</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/beyond_bar</item>
     </style>
 
     <style name="Divider">
@@ -67,21 +39,134 @@
         <item name="android:background">@color/auxiliary_on</item>
     </style>
 
-    <style name="BottomHolder">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/long_rect_height</item>
-        <item name="android:background">@color/transparent</item>
-    </style>
-
     <style name="BottomNavigationView.General" parent="Widget.Design.BottomNavigationView">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/long_rect_height</item>
+        <item name="android:layout_height">@dimen/nav_bottom_height</item>
         <item name="android:layout_gravity">bottom</item>
         <item name="android:background">@color/bgBottomNav</item>
     </style>
 
-    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="SelfFloatingButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/margin_12</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/txt_description</item>
+        <item name="android:textColor">@color/txt_main</item>
+    </style>
 
-    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!--
+                                    TextView
+    -->
+
+    <style name="Text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Text.Tiny">
+        <item name="android:textSize">@dimen/txt_tiny</item>
+    </style>
+
+    <style name="Text.Tiny.HomepageCharge">
+        <item name="android:padding">@dimen/margin_2</item>
+        <item name="android:textColor">@color/txt_main</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Tiny.HomepageDiscount">
+        <item name="android:padding">@dimen/margin_2</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:background">@color/txt_main</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Description">
+        <item name="android:textSize">@dimen/txt_description</item>
+        <item name="android:textColor">@color/txt_description</item>
+    </style>
+
+    <style name="Text.Description.Black">
+        <item name="android:textColor">@dimen/txt_main</item>
+    </style>
+
+    <style name="Text.Main">
+        <item name="android:textSize">@dimen/txt_main</item>
+        <item name="android:textColor">@color/txt_main</item>
+    </style>
+
+    <style name="Text.Main.AutoScroll">
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="Text.Large">
+        <item name="android:textSize">@dimen/txt_large</item>
+        <item name="android:textColor">@color/txt_main</item>
+    </style>
+
+    <style name="Text.Large.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Large.Bold.Accent">
+        <item name="android:textColor">@color/colorAccentDark</item>
+    </style>
+
+    <style name="Text.Giant">
+        <item name="android:textSize">@dimen/txt_giant</item>
+    </style>
+
+    <style name="Text.Giant.White">
+        <item name="android:textColor">@color/bgItem</item>
+    </style>
+
+    <!--
+                                    Button
+    -->
+
+    <style name="Button.Basic" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:textSize">@dimen/txt_huge</item>
+        <item name="android:textColor">@color/txt_main</item>
+        <item name="android:background">@drawable/btn_accent_selector</item>
+        <item name="android:layout_height">@dimen/bar_bottom_height</item>
+    </style>
+
+    <style name="Button.Basic.Long" parent="Button.Basic">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="Button.Basic.Short" parent="Button.Basic">
+        <item name="android:layout_width">@dimen/short_btn_width</item>
+    </style>
+
+    <style name="Button.Basic.Short.Red" parent="Button.Basic.Short">
+        <item name="android:textColor">@color/bgItem</item>
+        <item name="android:background">@drawable/btn_red_selector</item>
+        <item name="android:layout_width">@dimen/short_btn_width</item>
+    </style>
+
+    <!--
+                                    BottomHolder
+    -->
+
+    <style name="BottomHolder">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="BottomHolder.Nav" parent="BottomHolder">
+        <item name="android:layout_height">@dimen/nav_bottom_height</item>
+    </style>
+
+    <style name="BottomHolder.Bar" parent="BottomHolder">
+        <item name="android:layout_height">@dimen/bar_bottom_height</item>
+    </style>
 
 </resources>

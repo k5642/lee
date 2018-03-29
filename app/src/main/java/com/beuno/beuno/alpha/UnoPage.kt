@@ -22,5 +22,6 @@ object UnoPage {
         const val ID_SETTINGS = R.id.action_settings
         const val ID_CLEAR = R.id.action_clear
         const val ID_EDIT = R.id.action_edit
+        const val ID_FINISH = R.id.action_finish
     }
 }

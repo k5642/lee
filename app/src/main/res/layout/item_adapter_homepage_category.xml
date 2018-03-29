@@ -19,5 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/item_img"
         android:layout_centerHorizontal="true"
+        style="@style/Text.Main"
         android:text="@string/test" />
 </RelativeLayout>
