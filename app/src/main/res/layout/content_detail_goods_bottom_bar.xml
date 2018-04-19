@@ -1,0 +1,40 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/bar_bottom_height"
+    android:layout_gravity="bottom"
+    android:layout_marginTop="@dimen/margin_8"
+    android:elevation="@dimen/elevation_light">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgGeneral">
+
+        <com.beuno.beuno.widgets.custom.UnoItemGoods
+            android:id="@+id/goods_collect"
+            android:layout_width="@dimen/goods_icon_width"
+            android:layout_height="@dimen/bar_bottom_height"
+            android:background="@drawable/bg_general_clickable_selector"
+            app:img="@drawable/detail_icon_collect_selector"
+            app:txt="@string/collect" />
+
+        <com.beuno.beuno.widgets.custom.UnoItemGoods
+            android:id="@+id/goods_cart"
+            android:layout_width="@dimen/goods_icon_width"
+            android:layout_height="@dimen/bar_bottom_height"
+            android:background="@drawable/bg_general_clickable_selector"
+            app:img="@mipmap/detail_icon_cart"
+            app:layout_constraintStart_toEndOf="@id/goods_collect"
+            app:txt="@string/cart" />
+
+        <Button
+            android:id="@+id/goods_btn_cart"
+            style="@style/Button.Basic.Short"
+            android:text="@string/goods_add_to_cart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

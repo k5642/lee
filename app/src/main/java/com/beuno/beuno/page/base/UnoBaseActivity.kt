@@ -1,6 +1,5 @@
 package com.beuno.beuno.page.base
 
-import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -29,7 +28,7 @@ abstract class UnoBaseActivity : AppCompatActivity() {
     /** 用于继承扩展 */
     protected open fun beforeSetup(savedInstanceState: Bundle?) {}
     /** onCreate 时候的初始化操作. */
-    abstract fun setup(savedInstanceState: Bundle?)
+    protected open fun setup(savedInstanceState: Bundle?) {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +68,7 @@ abstract class UnoBaseActivity : AppCompatActivity() {
     // ------------------------------------------------------------------------------
 
     // 当前Fragment
-    private var mFragmentContent : Fragment? = null
+    private var mFragment : UnoBaseFragment? = null
 
     /** 默认的初始Fragment */
     abstract fun defaultFragment(): Class<UnoBaseFragment>
@@ -89,7 +88,12 @@ abstract class UnoBaseActivity : AppCompatActivity() {
     /** 切换Fragment */
     fun switchFragment(clsFragment: Class<UnoBaseFragment>) {
         val containerViewId = R.id.container
-        mFragmentContent = PluginFragment.alterFragment(this, containerViewId, clsFragment, mFragmentContent)
+        mFragment = PluginFragment.alterFragment(this, containerViewId, clsFragment, mFragment) as UnoBaseFragment
+    }
+
+    override fun onBackPressed() {
+        if (mFragment != null) mFragment?.finish()
+        else super.onBackPressed()
     }
 
     companion object {

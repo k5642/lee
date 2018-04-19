@@ -9,7 +9,6 @@ import com.beuno.beuno.shortcut.logger
 class UnoApplication: MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
-        val appInfo = applicationContext.packageManager.getApplicationInfo(packageName, 0)
-        appInfo.logger()
+        applicationContext.packageManager.getApplicationInfo(packageName, 0).logger("App Info")
     }
 }

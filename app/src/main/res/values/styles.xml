@@ -56,6 +56,11 @@
         <item name="android:textColor">@color/txt_main</item>
     </style>
 
+    <style name="RecyclerView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/bgGeneral</item>
+    </style>
     <!--
                                     TextView
     -->
@@ -89,7 +94,16 @@
     </style>
 
     <style name="Text.Description.Black">
-        <item name="android:textColor">@dimen/txt_main</item>
+        <item name="android:textColor">@color/txt_main</item>
+    </style>
+
+    <style name="Text.Description.White">
+        <item name="android:textColor">@color/bgItem</item>
+    </style>
+
+    <style name="Text.Description.Border">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_accent_border</item>
     </style>
 
     <style name="Text.Main">
@@ -111,6 +125,13 @@
         <item name="android:textColor">@color/txt_main</item>
     </style>
 
+    <style name="Text.Large.Clickable">
+        <item name="android:gravity">center</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/tab_goods_selector</item>
+    </style>
+
     <style name="Text.Large.Bold">
         <item name="android:textStyle">bold</item>
     </style>
@@ -121,6 +142,18 @@
 
     <style name="Text.Giant">
         <item name="android:textSize">@dimen/txt_giant</item>
+    </style>
+
+    <style name="Text.Giant.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Giant.Bold.BgGeneralDark">
+        <item name="android:background">@color/bgGeneralDark</item>
+        <item name="android:paddingStart">@dimen/margin_16</item>
+        <item name="android:paddingEnd">@dimen/margin_16</item>
+        <item name="android:paddingTop">@dimen/margin_8</item>
+        <item name="android:paddingBottom">@dimen/margin_8</item>
     </style>
 
     <style name="Text.Giant.White">
@@ -167,6 +200,18 @@
 
     <style name="BottomHolder.Bar" parent="BottomHolder">
         <item name="android:layout_height">@dimen/bar_bottom_height</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme.NoActionBar">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
     </style>
 
 </resources>

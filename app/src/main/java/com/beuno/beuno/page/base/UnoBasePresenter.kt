@@ -1,7 +1,9 @@
 package com.beuno.beuno.page.base
 
 /** Presenter */
-open class UnoBasePresenter <out T : UnoBaseFragment> (val fragment: T)
+abstract class UnoBasePresenter <out T : UnoBaseFragment> (val fragment: T) {
+    abstract fun initialize()
+}
 
 object UnoPresenterFactory {
     @Suppress("UNCHECKED_CAST")

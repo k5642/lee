@@ -3,6 +3,7 @@
     <dimen name="zero">0dp</dimen>
     <dimen name="elevation_light">4dp</dimen>
     <dimen name="elevation_deep">8dp</dimen>
+    <dimen name="margin_1">1dp</dimen>
     <dimen name="margin_2">2dp</dimen>
     <dimen name="margin_4">4dp</dimen>
     <dimen name="margin_6">6dp</dimen>
@@ -43,11 +44,20 @@
     <dimen name="self_avatar_margin_top">45dp</dimen>
     <dimen name="self_name_margin_top">110dp</dimen>
 
+    <!-- goods -->
+    <dimen name="goods_img_idx_width">50dp</dimen>
+    <dimen name="goods_img_idx_height">32dp</dimen>
+    <dimen name="goods_part_a_height">270dp</dimen>
+
     <!--img-->
     <dimen name="icon_length">32dp</dimen>
     <dimen name="arrow_length">28dp</dimen>
+    <dimen name="arrow_length_small">15dp</dimen>
     <dimen name="cart_pic_length">80dp</dimen>
+    <dimen name="brand_pic_length">80dp</dimen>
     <dimen name="self_avatar_length">60dp</dimen>
+    <dimen name="goods_icon_length">28dp</dimen>
+    <dimen name="goods_icon_width">60dp</dimen>
 
     <!--text size-->
     <dimen name="txt_giant">18sp</dimen>

@@ -10,6 +10,8 @@ import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
 /**
+ * 测试用, 目测这个项目是用不上了.
+ *
  * android.opengl 包提供的OpenGL-API是优化版本.
  *
  * Projection Matrix 用于坐标变换,

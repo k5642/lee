@@ -7,7 +7,21 @@
     </declare-styleable>
 
     <declare-styleable name="UnoItemSelf">
+        <attr name="img_self" format="color|reference" />
+        <attr name="txt_self" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="UnoItemGoods">
         <attr name="img" format="color|reference" />
         <attr name="txt" format="string" />
+    </declare-styleable>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 </resources>

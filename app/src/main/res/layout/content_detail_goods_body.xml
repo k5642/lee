@@ -1,0 +1,11 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bgGeneral">
+
+    <include layout="@layout/content_goods_body_a" />
+    <include layout="@layout/content_goods_body_b" />
+    <include layout="@layout/content_goods_body_c" />
+    <include layout="@layout/content_goods_body_d" />
+
+</android.support.constraint.ConstraintLayout>

@@ -6,7 +6,8 @@
     <color name="colorAccentDark">#ff4466</color>
 
     <color name="bgItem">#fff</color>
-    <color name="bgGeneral">#f9f9f9</color>
+    <color name="bgGeneral">#f6f6f6</color>
+    <color name="bgGeneralDark">#ededed</color>
     <color name="bgDrawer">#701F7F</color>
     <color name="bgBottomNav">#88ffce34</color>
     <color name="indicator_on">#666</color>
@@ -27,6 +28,8 @@
     <color name="transparent">#0000</color>
     <color name="translucent">#8000</color>
     <color name="translucentAccent">#88ffce34</color>
+
+    <color name="black_overlay">#66000000</color>
 
     <!-- Specified -->
 </resources>

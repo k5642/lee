@@ -36,18 +36,20 @@ class SelfFragment : UnoBaseFragment() {
         logger("hide toolbar title")
         PluginActivity.hideSupportActionBarTitle(mSupportActionBar)
 
-        val drawable = mPresenter.mImage.getResouce(R.mipmap.mine_avatar_defult).let {
-            mPresenter.mImage.toCircle(it)
-        }
-        findViewById<ImageView>(R.id.self_avatar)
-                ?.setImageDrawable(drawable)
-        findViewById<TextView>(R.id.self_name)
-                ?.text = "今年要发大财"
-
+        mPresenter.initialize()
     }
 }
 
 class SelfPresenter(fragment: SelfFragment): UnoBasePresenter<SelfFragment>(fragment) {
+    override fun initialize() {
+        val drawable = mImage.getResouce(R.mipmap.mine_avatar_defult).let { mImage.toCircle(it) }
+        val avatar = fragment.getView(R.id.self_avatar) as ImageView
+        avatar.setImageDrawable(drawable)
+        val name = fragment.getView(R.id.self_name) as TextView
+        name.text = "今年要发大财"
+
+    }
+
     val mImage = Img()
 
     inner class Img {

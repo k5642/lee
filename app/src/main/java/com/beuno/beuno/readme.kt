@@ -1,24 +1,11 @@
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Transformations
 
-/*
-Google架构扩展包官方文档:
-    https://developer.android.com/topic/libraries/architecture/guide.html#recommended_app_architecture
-LiveData:
-    使用场景: Model层初始化完成, 通知UI
-    解说: 丫是一个数据集, 在数据变动时, 触发监听, 通知UI组件.
-         也可以用于监听组件的生命周期, 及时释放资源.
-    使用: 与RxJava2共用, 引用库 android.arch.lifecycle:reactivestreams
-
-Agera:
-    Google的响应库.
- */
-
-/*
-架构:
-    UnoBaseActivity
-        全屏 & 非全屏的.
-    UnoBaseFragment
+/**
+ * todo 设计需求
+ * 登录方式, 传统登录, 短信验证码, 微信登录
+ * 折扣方式,
+ *
  */
 
 object IdLiveData : LiveData<Int>()

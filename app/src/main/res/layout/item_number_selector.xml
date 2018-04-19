@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/margin_4">
+
+    <ImageButton
+        android:id="@+id/item_minus"
+        android:layout_width="@dimen/icon_length"
+        android:layout_height="@dimen/icon_length"
+        android:background="@drawable/btn_border_press_selector"
+        android:contentDescription="@string/default_img_description"
+        android:padding="@dimen/margin_8"
+        android:src="@mipmap/cart_num_minus" />
+
+    <EditText
+        android:id="@+id/item_txt"
+        style="@style/Text.Main"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/icon_length"
+        android:background="@drawable/btn_border_press_selector"
+        android:gravity="center"
+        android:text="@string/default_num"
+        android:hint="@string/hint_num"
+        android:inputType="number"
+        android:paddingEnd="@dimen/margin_16"
+        android:paddingStart="@dimen/margin_16"
+        android:layout_marginStart="@dimen/margin_1"
+        android:layout_marginEnd="@dimen/margin_1" />
+
+    <ImageButton
+        android:id="@+id/item_plus"
+        android:layout_width="@dimen/icon_length"
+        android:layout_height="@dimen/icon_length"
+        android:background="@drawable/btn_border_press_selector"
+        android:contentDescription="@string/default_img_description"
+        android:padding="@dimen/margin_8"
+        android:src="@mipmap/cart_num_add" />
+
+</LinearLayout>
+

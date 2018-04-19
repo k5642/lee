@@ -1,24 +1,23 @@
 package com.beuno.beuno.page.base
 
-import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.constraint.ConstraintLayout
-import android.support.transition.TransitionManager
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
 import android.view.*
+import android.widget.LinearLayout
 import com.beuno.beuno.R
+import com.beuno.beuno.alpha.UnoConfig
 import com.beuno.beuno.alpha.UnoPage
 import com.beuno.beuno.errors.UnoError
-import com.beuno.beuno.page.single_page.SearchActivity
+import com.beuno.beuno.page.page_single.SearchActivity
 import com.beuno.beuno.plugin.PluginActivity
+import com.beuno.beuno.plugin.PluginTransition
 import com.beuno.beuno.shortcut.*
-import com.beuno.beuno.widgets.FadeInTransition
-import com.beuno.beuno.widgets.FadeOutTransition
-import com.beuno.beuno.widgets.SearchingOutsideToolbar
-import kotlinx.android.synthetic.main.fragment_category.*
+import com.beuno.beuno.widgets.custom.ToolbarOutside
+import kotlinx.android.synthetic.main.fragment_home_category.*
 
 /**
  * Fragment的业务逻辑:
@@ -26,15 +25,14 @@ import kotlinx.android.synthetic.main.fragment_category.*
  * Layout的实现.
  * 页面间的跳转逻辑.
  */
-//abstract class UnoBaseFragment : android.support.v4.app.Fragment() {
-abstract class UnoBaseFragment : Fragment() {
+abstract class UnoBaseFragment : android.support.v4.app.Fragment() {
 
     // ------------------------------------------------------------------------------
     //                                General
     // ------------------------------------------------------------------------------
 
-    private lateinit var mRoot: View
-    protected lateinit var mActivity: UnoBaseActivity
+    lateinit var mRoot: View
+    lateinit var mActivity: UnoBaseActivity
 
     // 创建时调用子类重写的方法进行初始化操作
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +52,7 @@ abstract class UnoBaseFragment : Fragment() {
      * 跳转逻辑集中营
      * @return 目标ID是否被使用, 用于When-Else结构
      */
-    protected abstract fun explorer(pageID: Int)
+    abstract fun explorer(pageID: Int)
 
     /** 子类需提供布局文件, 用于初始化 */
     protected abstract fun layoutRes(): Int
@@ -63,7 +61,7 @@ abstract class UnoBaseFragment : Fragment() {
     protected abstract fun initViews(root: View)
 
     /** 从Root中查找View */
-    protected fun <T : View> findViewById(@IdRes id: Int): T? {
+    private fun <T : View> findViewById(@IdRes id: Int): T? {
         return mRoot.findViewById(id)
     }
 
@@ -72,7 +70,16 @@ abstract class UnoBaseFragment : Fragment() {
         return mRoot.findViewById(id)
     }
 
-    protected fun finish() {
+    /** 自定义返回策略 */
+    var mFinishStrategy: (() -> Unit)? = null
+
+    fun finish() {
+        logger("strategy = $mFinishStrategy", true)
+        if (mFinishStrategy != null) mFinishStrategy?.invoke()
+        else finishForced()
+    }
+
+    fun finishForced() {
         mActivity.finish()
     }
 
@@ -141,11 +148,13 @@ abstract class UnoBackwardFragment : UnoBaseFragment() {
         return true
     }
 
-    /** 页面的返回逻辑 */
-    abstract fun onBackward()
+    /** 页面的返回导航按钮逻辑, 默认关闭当前页 */
+    private fun onBackward() {
+        finish()
+    }
 
     /** Toolbar的页面标题 */
-    abstract fun title(): String
+    open fun title(): String = "UnSet"
 }
 
 /**
@@ -153,15 +162,20 @@ abstract class UnoBackwardFragment : UnoBaseFragment() {
  */
 abstract class UnoSearchBarFragment : UnoBaseFragment() {
     private lateinit var mContent: ViewGroup
-    private lateinit var mSearchBar: SearchingOutsideToolbar
-    override fun menuRes() = R.menu.menu_search_outside
+    private lateinit var mSearchBar: ToolbarOutside
+    /** 搜索条消失时需要一同消失的控件 */
+    protected open fun viewToHide(): View? = null
+    override fun menuRes() = R.menu.menu_search_fake
     override fun beforeInitViews(root: View) {
         super.beforeInitViews(root)
         mContent = getView(R.id.content_container) as ViewGroup
-        mSearchBar = mToolbar as SearchingOutsideToolbar
+        mSearchBar = mToolbar as ToolbarOutside
         mSearchBar.setOnClickListener {
             transitionToSearch()
         }
+
+        logger("hide toolbar title")
+        PluginActivity.hideSupportActionBarTitle(mSupportActionBar)
     }
 
     override fun onResume() {
@@ -178,15 +192,13 @@ abstract class UnoSearchBarFragment : UnoBaseFragment() {
     /** 跳转到搜索页面的动画 */
     private fun transitionToSearch() {
         // 搜索条扩张动画, 完成时跳转搜索页面.
-        val transition = FadeOutTransition.instance {
-            navigateToSearchWhenDone()
-        }
-
+        val transition = PluginTransition.instance { navigateToSearchWhenDone() }
         // 大头都交给TransitionManager解决就好. 我们只需要改变attributes, 移除边界, 隐藏子控件.
-        TransitionManager.beginDelayedTransition(mSearchBar, transition)
+        PluginTransition.beginDelayedTransition(mSearchBar, transition)
         setSearchBarMargin(0)
         mSearchBar.hideContent()
         mContent.hide()
+        viewToHide()?.hide()
     }
 
     /** 动画完成时, 实现跳转逻辑 */
@@ -198,19 +210,24 @@ abstract class UnoSearchBarFragment : UnoBaseFragment() {
     }
 
     private fun toolbarFadeIn() {
-        TransitionManager.beginDelayedTransition(toolbar, FadeInTransition.instance())
-        val margin = activity.resources.getDimensionPixelSize(R.dimen.margin_8)
+        PluginTransition.beginDelayedTransition(toolbar, PluginTransition.instance(PluginTransition.DURATION_LONG))
+        val margin = activity!!.resources.getDimensionPixelSize(R.dimen.margin_8)
         setSearchBarMargin(margin)
         mSearchBar.showContent()
         mContent.show()
+        viewToHide()?.show()
     }
 
     /** 搜索条没法套 AppBarLayout, 会覆盖手写的过场动画, 所以需要隔离状态栏 */
     private fun setSearchBarMargin(margin: Int) {
-        val statusBarHeight = PluginActivity.getStatusBarHeight(activity)
+        val statusBarHeight = UnoConfig.STATUS_BAR_HEIGHT
         val containerLP = mSearchBar.layoutParams
         when (containerLP) {
             is ConstraintLayout.LayoutParams -> {
+                containerLP.setMargins(margin, margin + statusBarHeight, margin, margin)
+                mSearchBar.layoutParams = containerLP
+            }
+            is LinearLayout.LayoutParams -> {
                 containerLP.setMargins(margin, margin + statusBarHeight, margin, margin)
                 mSearchBar.layoutParams = containerLP
             }
@@ -235,7 +252,7 @@ class UnoDefaultFragment : UnoBaseFragment() {
 }
 
 /**
- * 默认崩溃类, 用于When-Else
+ * 默认非崩溃类, 用于测试
  */
 @Deprecated("Test")
 class UnoTestFragment : UnoBaseFragment() {

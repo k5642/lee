@@ -1,51 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/homepage_container"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgGeneral">
 
-    <com.beuno.beuno.widgets.SearchingOutsideToolbar
+    <com.beuno.beuno.widgets.custom.ToolbarOutside
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_24"
         android:elevation="@dimen/margin_8"
-        app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:layout_marginBottom="@dimen/margin_8"
         app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+    <include layout="@layout/content_goods_tab" />
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/content_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/bgGeneral"
-        android:layout_marginTop="@dimen/margin_8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/margin_8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        android:layout_marginTop="@dimen/margin_8"
+        android:background="@color/bgGeneral">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/list_category"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <View
-                android:id="@+id/bottom_holder"
-                style="@style/BottomHolder.Nav" />
-
-        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_goods"
+            style="@style/RecyclerView" />
 
     </android.support.v4.widget.NestedScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

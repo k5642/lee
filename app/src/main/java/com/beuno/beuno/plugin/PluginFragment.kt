@@ -1,7 +1,7 @@
 package com.beuno.beuno.plugin
 
-import android.app.Fragment
 import android.support.annotation.IdRes
+import android.support.v4.app.Fragment
 import com.beuno.beuno.page.base.UnoBaseActivity
 import com.beuno.beuno.page.base.UnoBaseFragment
 
@@ -19,7 +19,7 @@ object PluginFragment {
     fun <T : UnoBaseFragment> alterFragment(activity: UnoBaseActivity, @IdRes container: Int, clsFragment: Class<T>, toHide: Fragment?): Fragment {
         // 根据这货判定有木有缓存.
         val tag = clsFragment.simpleName
-        val fragmentManager = activity.fragmentManager
+        val fragmentManager = activity.supportFragmentManager
         val fragment = fragmentManager.findFragmentByTag(tag)
         val transaction = fragmentManager.beginTransaction()
         // 先判断是否被add过

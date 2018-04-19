@@ -1,16 +1,17 @@
-package com.beuno.beuno.page.single_page
+package com.beuno.beuno.page.page_single
 
-import android.support.transition.TransitionManager
 import android.view.View
 import com.beuno.beuno.R
 import com.beuno.beuno.alpha.UnoPage
 import com.beuno.beuno.page.base.UnoBaseFragment
 import com.beuno.beuno.page.base.UnoBaseSimpleActivity
 import com.beuno.beuno.plugin.PluginActivity
-import com.beuno.beuno.shortcut.*
-import com.beuno.beuno.widgets.FadeInTransition
-import com.beuno.beuno.widgets.FadeOutTransition
-import com.beuno.beuno.widgets.SearchingInsideToolbar
+import com.beuno.beuno.plugin.PluginTransition
+import com.beuno.beuno.shortcut.hideContent
+import com.beuno.beuno.shortcut.onGlobalLayoutListener
+import com.beuno.beuno.shortcut.showContent
+import com.beuno.beuno.shortcut.toFragment
+import com.beuno.beuno.widgets.custom.ToolbarOfSearchingPage
 
 /**
  * 搜索页,
@@ -20,6 +21,11 @@ import com.beuno.beuno.widgets.SearchingInsideToolbar
  */
 class SearchActivity : UnoBaseSimpleActivity() {
     override fun defaultFragment() = SearchFragment::class.java.toFragment()
+    override fun finish() {
+        super.finish()
+        // 自己处理过场动画, 不需要系统自带的
+        overridePendingTransition(0, 0)
+    }
 }
 
 class SearchFragment : UnoBaseFragment() {
@@ -29,13 +35,13 @@ class SearchFragment : UnoBaseFragment() {
         }
     }
 
-    private lateinit var mSearchBar: SearchingInsideToolbar
+    private lateinit var mSearchBar: ToolbarOfSearchingPage
 
     override fun layoutRes(): Int = R.layout.fragment_search
-    override fun menuRes() = R.menu.menu_search_inside
+    override fun menuRes() = R.menu.menu_search_actual
 
     override fun initViews(root: View) {
-        mSearchBar = mToolbar as SearchingInsideToolbar
+        mSearchBar = mToolbar as ToolbarOfSearchingPage
         mSearchBar.setNavigationOnClickListener {
 //            PluginActivity.hideKeyboard(mActivity)
             finish()
@@ -44,7 +50,7 @@ class SearchFragment : UnoBaseFragment() {
         // 只有从其他页面跳转过来的时候需要动画. Configuration Change 的时候, 不需要动画.
         mSearchBar.hideContent()
         mSearchBar.onGlobalLayoutListener {
-            TransitionManager.beginDelayedTransition(mSearchBar, FadeInTransition.instance())
+            PluginTransition.beginDelayedTransition(mSearchBar)
             mSearchBar.showContent()
         }
     }
@@ -61,13 +67,8 @@ class SearchFragment : UnoBaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        logger("onDestroyView")
         // 销毁时动画
-        val transition = FadeOutTransition.instance {
-            finish()
-            mActivity.overridePendingTransition(0,0)
-        }
-        TransitionManager.beginDelayedTransition(mSearchBar, transition)
+        PluginTransition.beginDelayedTransition(mSearchBar)
         mSearchBar.hideContent()
     }
 }

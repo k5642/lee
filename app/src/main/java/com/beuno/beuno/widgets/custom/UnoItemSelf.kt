@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.beuno.beuno.R
 
 /**
- * TODO: document your custom view class.
+ * Self页面中的下方Content项
  */
 class UnoItemSelf(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : ConstraintLayout(context, attrs, defStyleAttr) {
     private val img: Drawable
@@ -19,8 +19,8 @@ class UnoItemSelf(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : C
 
     init {
         val typeArray = context.obtainStyledAttributes(attrs, R.styleable.UnoItemSelf)
-        img = typeArray.getDrawable(R.styleable.UnoItemSelf_img)
-        txt = typeArray.getString(R.styleable.UnoItemSelf_txt)
+        img = typeArray.getDrawable(R.styleable.UnoItemSelf_img_self)
+        txt = typeArray.getString(R.styleable.UnoItemSelf_txt_self)
         typeArray.recycle()
     }
 

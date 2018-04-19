@@ -1,4 +1,4 @@
-package com.beuno.beuno.page.single_page
+package com.beuno.beuno.page.page_single
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -22,9 +22,6 @@ class NoticeFragment : UnoBackwardFragment() {
 
     override fun explorer(pageID: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-    override fun onBackward() {
-        finish()
     }
 
     private lateinit var mNoticeList: RecyclerView

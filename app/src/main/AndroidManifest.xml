@@ -16,16 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".page.activities.MainActivity"
-            android:label="@string/app_name">
+            android:name=".page.entry.EntryActivity"
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".page.entry.MainActivity"
+            android:launchMode="singleTask">
         </activity>
         <!--
              Our activity is the built-in NativeActivity framework class.
@@ -40,20 +43,16 @@
                 android:name="android.app.lib_name"
                 android:value="TeapotNativeActivity" />
         </activity>
-        <activity
-            android:name=".page.entry.TestActivity"
-            android:label="@string/label_test" />
-        <activity
-            android:name=".page._extra.gl.UnoGLActivity"
-            android:label="@string/label_gl" />
-        <activity
-            android:name=".page.settings.SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".page.single_page.SearchActivity" />
-        <activity
-            android:name=".page.single_page.CartActivity" />
+        <activity android:name=".page.entry.TestActivity" />
+        <activity android:name=".page._extra.gl.UnoGLActivity" />
+        <activity android:name=".page.settings.SettingsActivity" />
         <activity android:name=".page.base.UnoDefaultActivity" />
-        <activity android:name=".page.single_page.NoticeActivity" />
+        <activity android:name=".page.page_single.SearchActivity" />
+        <activity android:name=".page.page_single.CartActivity" />
+        <activity android:name=".page.page_single.NoticeActivity" />
+        <activity android:name=".page.page_single.BrandActivity" />
+        <activity android:name=".page.page_single.CategoryActivity" />
+        <activity android:name=".page.page_detail.DetailGoodsActivity" />
     </application>
 
 </manifest>

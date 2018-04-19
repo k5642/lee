@@ -1,0 +1,56 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/goods_part_c"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_8"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintVertical_bias="0"
+    app:layout_constraintTop_toBottomOf="@id/goods_part_b">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16">
+
+        <TextView
+            android:id="@+id/goods_label_attr"
+            style="@style/Text.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/goods_label_attr" />
+
+        <View
+            android:id="@+id/goods_attr_divider"
+            style="@style/Divider"
+            android:layout_marginTop="@dimen/margin_16"
+            app:layout_constraintTop_toBottomOf="@id/goods_label_attr" />
+
+        <TextView
+            android:id="@+id/goods_version"
+            style="@style/Text.Main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:text="@string/tmp_goods_version"
+            app:layout_constraintTop_toBottomOf="@id/goods_attr_divider" />
+
+        <TextView
+            android:id="@+id/goods_id"
+            style="@style/Text.Main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/tmp_goods_id"
+            app:layout_constraintTop_toBottomOf="@id/goods_version" />
+
+        <TextView
+            android:id="@+id/goods_material"
+            style="@style/Text.Main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/tmp_goods_material"
+            app:layout_constraintTop_toBottomOf="@id/goods_id" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

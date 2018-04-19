@@ -9,13 +9,11 @@
         android:layout_height="wrap_content"
         android:elevation="@dimen/elevation_light"
         android:padding="@dimen/margin_16"
-        app:layout_constraintTop_toBottomOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/RecyclerView"
             android:background="@color/bgItem" />
     </android.support.v7.widget.CardView>
 
@@ -31,9 +29,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_brand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/RecyclerView"
             android:background="@drawable/home_brand_bg"
             android:paddingEnd="@dimen/margin_16"
             android:paddingStart="@dimen/margin_16" />
@@ -52,9 +48,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_recommend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            style="@style/RecyclerView"
             android:background="@drawable/home_brand_bg" />
     </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>

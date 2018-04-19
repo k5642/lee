@@ -24,12 +24,10 @@
 
             <View
                 android:id="@+id/bottom_holder"
+                android:layout_marginTop="@dimen/margin_8"
                 style="@style/BottomHolder.Nav"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/holder_recommend" />
-
         </android.support.constraint.ConstraintLayout>
-
     </android.support.v4.widget.NestedScrollView>
-
 </android.support.design.widget.CoordinatorLayout>

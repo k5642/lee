@@ -11,8 +11,8 @@ fun initLogTag(tag: String) {
 }
 
 /** Log, 当前日志项, warn级别 */
-fun <T : Any> T.logger(): T {
-    logger("$this", true)
+fun <T : CharSequence> T.logger(prefix: String = String()): T {
+    logger("$prefix: $this", true)
     return this
 }
 

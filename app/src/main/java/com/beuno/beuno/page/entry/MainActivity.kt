@@ -1,4 +1,4 @@
-package com.beuno.beuno.page.activities
+package com.beuno.beuno.page.entry
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,10 +7,10 @@ import com.beuno.beuno.alpha.UnoPage
 import com.beuno.beuno.page.base.UnoBaseFragment
 import com.beuno.beuno.page.base.UnoBaseFullScreenActivity
 import com.beuno.beuno.page.base.UnoDefaultFragment
-import com.beuno.beuno.page.single_page.CartActivity
-import com.beuno.beuno.page.homepage.CategoryFragment
+import com.beuno.beuno.page.homepage.HomeCategoryFragment
 import com.beuno.beuno.page.homepage.HomepageFragment
 import com.beuno.beuno.page.homepage.SelfFragment
+import com.beuno.beuno.page.page_single.CartActivity
 import com.beuno.beuno.shortcut.logger
 import com.beuno.beuno.shortcut.toActivity
 import com.beuno.beuno.shortcut.toFragment
@@ -44,7 +44,7 @@ class MainActivity : UnoBaseFullScreenActivity() {
                         return false
                     }
             UnoPage.PageID.ID_HOMEPAGE -> HomepageFragment::class.java
-            UnoPage.PageID.ID_CATEGORY -> CategoryFragment::class.java
+            UnoPage.PageID.ID_CATEGORY -> HomeCategoryFragment::class.java
             UnoPage.PageID.ID_SELF -> SelfFragment::class.java
             else -> UnoDefaultFragment::class.java
         }

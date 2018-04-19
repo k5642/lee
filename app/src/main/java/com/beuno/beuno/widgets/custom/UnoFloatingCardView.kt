@@ -1,4 +1,4 @@
-package com.beuno.beuno.widgets
+package com.beuno.beuno.widgets.custom
 
 import android.content.Context
 import android.support.design.widget.AppBarLayout
@@ -6,10 +6,9 @@ import android.support.design.widget.CoordinatorLayout
 import android.support.v7.widget.CardView
 import android.util.AttributeSet
 import android.view.View
-import com.beuno.beuno.shortcut.logger
 
 /**
- * 悬浮于两个View中间的CardView
+ * 悬浮于两个View中间的CardView, 用于Self页面中间悬浮.
  */
 class UnoFloatingCardView
 @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null)
@@ -54,6 +53,5 @@ class UnoFloatingCardViewBehavior
             height = if (heightThis < 0) 0 else heightThis
         }
         child.layoutParams = lpThis
-        logger("${child.height} height, $toolbarMovingDistance distance, $mBaseHeight baseHeight")
     }
 }

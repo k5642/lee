@@ -1,0 +1,70 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_goods_plus_container"
+    android:layout_width="match_parent"
+    android:layout_height="1px"
+    android:layout_gravity="bottom">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/goods_plus_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/nav_bottom_height"
+        android:background="@color/bgItem"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/goods_plus_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:contentDescription="@string/default_img_description"
+            android:padding="@dimen/margin_16"
+            android:src="@mipmap/window_btn_close"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/goods_plus_label_spec"
+            style="@style/Text.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_16"
+            android:text="@string/goods_plus_label_spec"
+            app:layout_constraintTop_toBottomOf="@id/goods_plus_close" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/goods_plus_spec_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/margin_16"
+            android:paddingStart="@dimen/margin_16"
+            app:layout_constraintTop_toBottomOf="@id/goods_plus_label_spec" />
+
+        <TextView
+            android:id="@+id/goods_plus_label_num"
+            style="@style/Text.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_16"
+            android:text="@string/goods_plus_label_num"
+            app:layout_constraintTop_toBottomOf="@id/goods_plus_spec_list" />
+
+        <com.beuno.beuno.widgets.custom.UnoItemNumSelector
+            android:id="@+id/goods_plus_num_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/margin_16"
+            android:paddingEnd="@dimen/margin_16"
+            android:paddingStart="@dimen/margin_16"
+            app:layout_constraintTop_toBottomOf="@id/goods_plus_label_num" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/goods_plus_top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/translucent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/goods_plus_bottom" />
+</android.support.constraint.ConstraintLayout>

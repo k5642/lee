@@ -7,12 +7,8 @@ object UnoError {
     private const val MSG_DEFAULT_FRAGMENT = "Default Fragment created"
     private const val MSG_DEFAULT_ACTIVITY = "Default Activity created"
 
-    fun ErrorDefaultFragment(): RuntimeException {
-        throw RuntimeException(MSG_DEFAULT_FRAGMENT)
-    }
+    fun ErrorDefaultFragment(): RuntimeException = RuntimeException(MSG_DEFAULT_FRAGMENT)
 
-    fun ErrorDefaultActivity(): RuntimeException {
-        throw RuntimeException(MSG_DEFAULT_ACTIVITY)
-    }
+    fun ErrorDefaultActivity(): RuntimeException = RuntimeException(MSG_DEFAULT_ACTIVITY)
 }
 

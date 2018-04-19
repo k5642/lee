@@ -6,13 +6,11 @@ import android.graphics.Rect
 import android.support.annotation.DrawableRes
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
-import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.beuno.beuno.R
-import com.beuno.beuno.shortcut.getSize
 import com.beuno.beuno.shortcut.logger
 
 /**
@@ -92,23 +90,15 @@ object PluginActivity {
     }
 
     /**
-     * 将状态栏融入最上层的View
-     */
-    fun adjustTopView(activity: Activity, view: View) {
-        val statusBarHeight = getStatusBarHeight(activity)
-        val height = view.getSize().second
-        logger("get size = ${view.getSize()}")
-        view.layoutParams.height = height + statusBarHeight
-        view.setPadding(view.paddingLeft, view.paddingTop + statusBarHeight, view.paddingRight, view.paddingBottom)
-    }
-
-    /**
-     * 获取状态栏高度
+     * 获取状态栏高度,
+     * Some older devices needs a small delay between UI widget updates
+     * and a change of the status and navigation bar.
      */
     fun getStatusBarHeight(activity: Activity): Int {
         return Rect()
                 .also { activity.window.decorView.getWindowVisibleDisplayFrame(it) }
                 .top
+                .also { logger("status bar height = $it") }
     }
 }
 

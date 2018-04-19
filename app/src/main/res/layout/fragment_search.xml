@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.beuno.beuno.page.homepage.CategoryFragment">
+    tools:context="com.beuno.beuno.page.homepage.HomeCategoryFragment">
 
-    <com.beuno.beuno.widgets.SearchingInsideToolbar
+    <com.beuno.beuno.widgets.custom.ToolbarOfSearchingPage
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
