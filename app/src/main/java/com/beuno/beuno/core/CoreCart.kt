@@ -27,7 +27,7 @@ object CartViewModel: UnoViewModel() {
     }
 
     fun getList(userId: String): LiveData<List<EntityCartItem>> {
-        return repository.getItems(userId)
+        return repository.getItems()
     }
 }
 
@@ -35,22 +35,22 @@ object CartViewModel: UnoViewModel() {
  * 数据获取逻辑, 当前使用的过期时间是最简单的实现了. 可以无限扩展.
  */
 object CartRepository {
-    private lateinit var mCartDao: DaoCart
     private lateinit var mItemDao: DaoCartItem
     fun init(cart: DaoCart, item: DaoCartItem) {
-        mCartDao = cart
         mItemDao = item
     }
 
     fun insert(item: EntityCartItem) {
-
+        mItemDao.save(item)
     }
 
     fun delete(itemId: Int) {
-
+        mItemDao
     }
 
-    fun getItems(userId: String): LiveData<List<EntityCartItem>> {
-        mItemDao.loadByCart(mCartDao.)
+    fun getItems(): LiveData<List<EntityCartItem>> {
+        return SelfRepository.getCartId().let {
+            mItemDao.loadByCart(it)
+        }
     }
 }

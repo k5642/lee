@@ -310,7 +310,8 @@ interface DaoGoodsSpec {
     fun insertAll(specs: List<EntityGoodsSpec>)
 }
 
-/** 购物车, 关联买家, 商品 */
+/** 购物车, 关联买家, 商品
+ * todo 目前看来没什么卵用, 直接CartItem关联BuyerId就好, 然而Order里面有独立字段, 先摆着, 后续看有木有保留的必要吧 */
 @Entity(tableName = "EntityCart",
         foreignKeys = [(ForeignKey(entity = DaoBuyer::class, parentColumns = ["id"], childColumns = ["buyer_id"], onDelete = ForeignKey.CASCADE))],
         indices = [Index(value = ["buyer_id"], unique = true)])
@@ -329,6 +330,9 @@ interface DaoCart {
 
     @Query("SELECT * FROM EntityCart WHERE buyer_id = :buyerId")
     fun loadByBuyer(buyerId: Long): LiveData<EntityCart>
+
+    @Delete
+    fun delete(cart: EntityCart)
 }
 
 /** 购物车货品, 关联购物车, 商品, 商品规格 */
